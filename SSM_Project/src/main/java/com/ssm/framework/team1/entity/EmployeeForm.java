@@ -5,13 +5,12 @@ import lombok.Data;
 @Data
 public class EmployeeForm {
 
-	private String id;
-	private String name;
-	private String department;
-	private String gender;
-	private String telephone;
-	private String date;
-	private String age;
-	private String address;
+	private String EMPLOYEE_ID;
+	private String EMPLOYEE_NAME;
+	private String DEPT_ID;
+	private String GENDER_ID = "G00";
+	private String TELEPHONE_NUMBER;
+	private String ENTRY_DATE;
+	private String AGE;
+	private String MAIL_ADDRESS;
 }
-	

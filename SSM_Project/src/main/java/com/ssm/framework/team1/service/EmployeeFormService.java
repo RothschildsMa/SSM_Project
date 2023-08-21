@@ -11,9 +11,23 @@ public class EmployeeFormService {
 	
 	@Autowired
     private EmployeeFormMapper employeeFormMapper;
-
-    public void saveEmployee(EmployeeForm employeeForm) {
+	
+	// 登録用
+	public String getMaxEmployeeId() {
+        return employeeFormMapper.getMaxEmployeeId();
+    }
+	 
+    public void createEmployee(EmployeeForm employeeForm) {
     	employeeFormMapper.insertEmployeeForm(employeeForm);
     }
-
+    
+	// 更新用
+	 public EmployeeForm getEmployeeById(String EMPLOYEE_ID) {
+	        return employeeFormMapper.getEmployeeById(EMPLOYEE_ID);
+	    }
+	
+	 public void updateEmployee(EmployeeForm employeeForm) {
+	        employeeFormMapper.updateEmployee(employeeForm);
+	    }
+    
 }
