@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+<meta charset="UTF-8">
+<title>勤怠承認一覧</title>
+<link rel="stylesheet" type="text/css" href="css/info.css">
+<script src="js/common.js"></script>
+</head>
+</head>
+<body>
+	<h1>LOGO</h1>
+	<form th:action="@{confirm}" method="post">
+		<div>
+			<label for="name">社員ID</label> <input type="text" name="name" />
+		</div>
+
+		<div id="buttonContainer">
+			<button id="logoutButton">Logout</button>
+		</div>
+
+		<div id="selectContainer">
+			<label for="busyo">所属部門</label> <select id="mainSelect">
+				<option value="">開発部</option>
+				<option value="">市場部</option>
+				<option value="">企画部</option>
+				<option value="">DD</option>
+				<option value="">EE</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="name">氏名</label> <input type="text" name="name" />
+		</div>
+
+		<div id="selectContainer">
+			<label for="kmjt">勤務状態</label> <select id="mainSelect">
+				<option value="">有り</option>
+				<option value="">無</option>
+			</select>
+		</div>
+
+		<div id="selectContainer">
+			<label for="ssjt">申請状態</label> <select id="mainSelect">
+				<option value="">有り</option>
+				<option value="">無</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="birth">勤怠年月：</label> <input type="date" name="birth" />
+		</div>
+
+		<input type="submit" value="検索"> <input type="submit"
+			value="閉じる">
+
+		<div id="tableContainer">
+
+			<table id="mainTable">
+				<thead>
+					<tr>
+						<th class="EMPLOYEE_ID">社員ID</th>
+						<th class="EMPLOYEE_NAME">氏名</th>
+						<th class="DEPT_ID">部門</th>
+						<th class="WORKING_HOURS">作業時間</th>
+						<th class="REST_HOURS">休憩時間</th>
+						<th class="OVERTIME_HOURS">残業時間</th>
+						<th class="ABSENCE_HOURS">欠勤時間</th>
+						<th class="STATUS_ID">勤務状態</th>
+						<th class="STATUS_NAME">申請状態</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr th:each="user : ${userList}" th:object="${user}">
+						<td class="EMPLOYEE_ID" th:text="*{EMPLOYEE_ID}"></td>
+						<td class="EMPLOYEE_NAME" th:text="*{EMPLOYEE_NAME}"></td>
+						<td class="DEPT_ID" th:text="*{DEPT_ID}"></td>
+						<td class="WORKING_HOURS" th:text="*{WORKING_HOURS}"></td>
+						<td class="OVERTIME_HOURS" th:text="*{OVERTIME_HOURS}"></td>
+						<td class="ABSENCE_HOURS" th:text="*{ABSENCE_HOURS}"></td>
+						<td class="STATUS_ID" th:text="*{STATUS_ID}"></td>
+						<td class="STATUS_NAME "th:text="*{STATUS_NAME}"></td>
+					</tr>
+
+					<tr>
+						<td class="EMPLOYEE_ID"></td>
+						<td class="EMPLOYEE_NAME"></td>
+						<td class="DEPT_ID"></td>
+						<td class="WORKING_HOURS"></td>
+						<td class="REST_HOURS"></td>
+						<td class="OVERTIME_HOURS"></td>
+						<td class="ABSENCE_HOURS"></td>
+						<td class="STATUS_ID"></td>
+						<td class="STATUS_NAME"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</form>
+</body>
+</html>
