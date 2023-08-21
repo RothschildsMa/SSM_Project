@@ -24,7 +24,7 @@
 		FROM CALENDAR_DATE
 		<where>HOLIDAY_FLG = 0 WORKING_HOURS != 0
 			AND LEFT(CALENDAR_DATE, 6) =
-			#{WorkingDays}
+			#{AttendanceDays}
 		</where>
 		GROUP BY LEFT(CALENDAR_DATE, 6)
 	</select>
@@ -48,7 +48,7 @@
 		</where>
 		GROUP BY LEFT（CALENDAR_DATE,6) ;
 	</select>
-	
+
 	<insert id="add">
 		INSERT INTO T_ATTENDANCE
 		(EMPLOYEE_ID,
@@ -59,8 +59,10 @@
 		STATUS_ID, REMARKS)
 		VALUES
 		(#{employeeId}, #{attendanceDate}, #{startTime},
-		#{endTime}, #{restHours}, #{workingHours},
-		#{overtimeHours}, #{absenceHours}, #{statusId}, #{remarks})
+		#{endTime},
+		#{restHours}, #{workingHours},
+		#{overtimeHours}, #{absenceHours},
+		#{statusId}, #{remarks})
 	</insert>
 </mapper>
 
