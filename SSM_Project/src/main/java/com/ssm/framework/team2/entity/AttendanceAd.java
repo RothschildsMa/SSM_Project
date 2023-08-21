@@ -1,33 +1,23 @@
 package com.ssm.framework.team2.entity;
 
-import java.sql.Date;
+import java.io.Serializable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import lombok.Data;
 
-@Entity
+@Data
 public class AttendanceAd {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Date attendanceDate;
-    private String startTime;
-    private String endTime;
-    private String restHours;
-    private String overtimeHours;
-    private String workingHours;
-    private int status;
-    private String workDescription;
-	public Date getAttendanceDate() {
-		return attendanceDate;
-	}
-	public void setAttendanceDate(Date attendanceDate) {
-		this.attendanceDate = attendanceDate;
-	}
+	public class Attendance implements Serializable{
 
-    // Getters and setters
-
-    // Constructors
+		private String employeeId;
+		private String attendanceDate;
+		private String startTime;
+		private String endTime;
+		private double restHours;
+		private double workingHours;
+		private double overtimeHours;
+		private double absenceHours;
+		private String statusName;
+		private String remarks;
+		
+	}
 }
