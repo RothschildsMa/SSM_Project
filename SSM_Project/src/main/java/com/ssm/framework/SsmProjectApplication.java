@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		"com.ssm.framework.team3.mapper"})
 public class SsmProjectApplication {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SsmProjectApplication.class, args);
 	}
