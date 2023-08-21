@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+ <link rel="stylesheet" type="text/css" href="css/list.css">
+</head>
+<body>
+	<form id="listForm" th:object="${searchForm}">
+    <div id="inputButtonContainer">
+        <div id="inputContainer">   
+        	<div >      
+                <div>
+                    <label for="employeeId">社員ID:</label><input type="text" id="employeeId" th:field="*{employeeId}">
+                </div>
+                <div>
+                    <label for="entryDate">入社年月日:</label>
+                    <input type="date" id="entryDateFrom" th:field="*{entryDateFrom}">
+                    <span>~</span>
+                    <input type="date" id="entryDateTo" th:field="*{entryDateTo}">
+                </div>
+            </div> 
+            <div id="selectContainer">
+            	<label for="deptId">所属:</label>
+                <select id="deptId" th:field="*{deptId}">
+                <option value="">D01</option>
+                <option value="">D02</option>
+                </select>
+            </div>
+            <div id="buttonContainerSearch">
+            	<button id="searchButton" onclick="submitForm('listForm','/search','post')">検索</button>
+            </div>
+        </div>
+    </div>
+    <div id="buttonContainer">
+        <button id="addButton">追加</button>
+        <button id="deleteButton" onclick="submitForm('listForm','/delete','post')">削除</button>
+        <button id="closeButton">閉じる</button>
+    </div>
+    
+    <div id="tableContainer">
+
+        <table id="mainTable">
+            <thead>
+                <tr>
+                	<th class="col-select">選択</th>
+                    <th class="col-employeeId">社員ID</th>
+                    <th class="col-entryDate">入社年月日</th>
+					<th class="col-employeeName">氏名</th>
+					<th class="col-gender">性別</th>
+					<th class="col-age">年齢</th>
+					<th class="col-deptId">所属</th>
+					<th class="col-mailAddress">メールアドレス</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr th:each="employee : ${employeeList}" th:object="${employee}">
+                	<td class="col-select"><input type="checkbox" id="select" name="select"></td>
+                    <td class="col-employeeId" th:text="*{employeeId}"></td>
+                    <td class="col-entryDate" th:text="*{entryDate}"></td>
+					<td class="col-employeeName" th:text="*{employeeName}"></td>
+					<td class="col-gender" th:text="*{genderId}"></td>
+					<td class="col-age" th:text="*{age}"></td>
+					<td class="col-deptId" th:text="*{deptId}"></td>
+					<td class="col-mailAddress" th:text="*{mailAddress}"></td>
+                </tr>
+                <tr>
+                    <td class="col-select"></td>
+                    <td class="col-employeeId"></td>
+                    <td class="col-entryDate"></td>
+					<td class="col-employeeName"></td>
+					<td class="col-gender"></td>
+					<td class="col-age"></td>
+					<td class="col-deptId"></td>
+					<td class="col-mailAddress"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+</body>
+
+</html>

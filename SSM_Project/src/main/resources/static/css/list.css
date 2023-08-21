@@ -1,0 +1,214 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #EEEEEE; 
+    color:#808080;
+}
+
+form{
+	width: 95%;
+	margin: auto;
+	margin-left: 250px;
+}
+
+#inputButtonContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+#inputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#inputContainer div {
+    display: flex;
+    flex-direction: column;
+}
+
+#inputContainer label {
+    margin: 0 ;
+    font-size: 20px;
+    
+}
+
+#inputContainer input {
+    margin: 0 10px;
+    padding: 10px;
+    border: 2px solid #444; /* Darker border */
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    width: 100%; /* Adjust as needed */
+    transition: all 0.3s ease;
+
+    /* Change these for different font styles */
+    font-size: 16px;
+    color: #f5f5f5; /* Light text */
+    background-color: #444; /* Dark input background */
+
+    /* Change these for different font styles */
+    font-size: 16px;
+    color: #f5f5f5; /* Light text */
+    background-color: #444; /* Dark input background */
+}
+
+#inputContainer input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+
+#selectContainer {
+    margin-left: 300px; /* Adjust as necessary */
+    width: 30%;
+}
+
+#selectContainer select {
+    padding: 10px;
+    width: 500%;
+    border: 2px solid #444; /* Darker border */
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #f5f5f5; /* Light text */
+    background-color: #444; /* Dark input background */
+    transition: all 0.3s ease;
+}
+
+#selectContainer select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+#buttonContainerSearch {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 580px;
+    width: 100%;
+}
+
+#buttonContainerSearch button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: 2px solid #888; /* Lighter border */
+    border-radius: 5px;
+    background-color: #444; /* Dark button background */
+    color: #f5f5f5; /* Light text color */
+    font-size: 1em; /* Larger text */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Box shadow effect */
+    text-align: center;
+    cursor: pointer;
+}
+
+#buttonContainerSearch button:hover {
+    background-color: #555; /* Lighten the button color when hovering */
+    border-color: #bbb; /* Lighter border when hovering */
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: -320px;
+    width: 100%;
+}
+
+#buttonContainer button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: 2px solid #888; /* Lighter border */
+    border-radius: 5px;
+    background-color: #444; /* Dark button background */
+    color: #f5f5f5; /* Light text color */
+    font-size: 0.9em; /* Larger text */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Box shadow effect */
+    text-align: center;
+    cursor: pointer;
+}
+
+#buttonContainer button:hover {
+    background-color: #555; /* Lighten the button color when hovering */
+    border-color: #bbb; /* Lighter border when hovering */
+}
+
+#tableContainer {
+    width: 80%;
+    overflow-y: auto;
+    height: 700px;
+    margin-top: 5px;
+}
+
+#mainTable {
+    width: 100%;
+    border-collapse: separate;
+    border: 2px solid #444; /* Darker border */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: #EEEEEE	; 
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#mainTable th,
+#mainTable td {
+    padding: 20px;
+    border: 1px solid #444; /* Darker border */
+}
+
+#mainTable th {
+    background-color: #EEEEEE; 
+    color:#808080;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#mainTable td {
+    text-align: left;
+}
+
+#mainTable tbody tr {
+    background-color: #EEEEEE; 
+    color:black;
+}
+
+#mainTable tbody tr:hover {
+    background-color: #EEEEEE; /* Lighten row on hover */
+    transition: all .3s ease;
+}
+
+.col-select {
+    width: 6%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-employeeId {
+    width: 16%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-entryDate {
+    width: 14%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-employeeName{
+    width: 16%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-gender {
+    width: 6.5%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-age {
+    width: 6.5%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-deptId {
+    width: 16%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
+.col-mailAddress {
+    width: 32%;  /* ”CˆÓ‚Ì‘å‚«‚³‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢ */
+}
