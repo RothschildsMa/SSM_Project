@@ -13,4 +13,6 @@ public interface ListMapper {
 	List<Employee> findall();
 	
 	List<Employee> findEmployees(SearchForm searchForm);
+	
+	List<Employee> deletebyId(String employeeId);
 }
