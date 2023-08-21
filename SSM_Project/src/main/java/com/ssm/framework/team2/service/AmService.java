@@ -20,10 +20,10 @@ public class AmService {
 		return mapper.findAinfo();
 	}
 	public void insert(AddForm form) {
-		form.setEmployeeId("E001");
-		form.setWorkingHours(1.5);
-		form.setAbsenceHours(1.0);
-		form.setStatusId(1);
+//		form.setEmployeeId("E001");
+//		form.setWorkingHours(1.5);
+//		form.setAbsenceHours(1.0);
+//		form.setStatusId(1);
 		
 		
 		mapper.add(form);

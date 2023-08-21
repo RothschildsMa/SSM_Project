@@ -22,4 +22,8 @@ public class ListService {
 	public List<Employee> searchEmployee(SearchForm searchForm){
 		return mapper.findEmployees(searchForm);
 	}
+	
+	public List<Employee> deleteEmployeeById(String employeeId) {
+	      return mapper.deletebyId(employeeId);
+	   }
 }

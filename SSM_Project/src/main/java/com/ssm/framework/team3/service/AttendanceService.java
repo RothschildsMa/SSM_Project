@@ -7,5 +7,7 @@ import com.ssm.framework.team3.bean.Attendance;
 
 public interface AttendanceService {
 
-	List<Attendance> getAll();
+	List<Attendance> getAll(String date,String id);
+	
+	void updateReq(List<String> dates);
 }

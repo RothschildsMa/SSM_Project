@@ -1,75 +1,70 @@
 package com.ssm.framework.team1.entity;
 
-import java.io.Serializable;
-import lombok.Data;
+import jakarta.persistence.*;
 
-@Data
-public class Form implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String employeeId;
-	private String name;
-	private String department;
-	private String gender;
-	private String telephone;
-	private String date;
-	private String age;
-	private String address;
+@Entity
+@Table(name = "t_employee")
+public class Form {
 
-	public String getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getAge() {
-		return age;
-	}
-	public void setAge(String age) {
-		this.age = age;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	@Id
+	@GeneratedValue
+	private String EMPLOYEE_ID;
+	private String EMPLOYEE_NAME;
+	private String DEPT_ID;
+	private String GENDER_ID;
+	private String TELEPHONE_NUMBER;
+	private String ENTRY_DATE;
+	private String AGE;
+	private String MAIL_ADDRESS;
 
-	@Override
-	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", name=" + name + ", department=" + department + ", gender="
-				+ gender + ", telephone=" + telephone + ", date=" + date + ", age=" + age + ", address=" + address
-				+ "]";
+	public String getEMPLOYEE_ID() {
+		return EMPLOYEE_ID;
+	}
+	public void setEMPLOYEE_ID(String eMPLOYEE_ID) {
+		EMPLOYEE_ID = eMPLOYEE_ID;
+	}
+	public String getEMPLOYEE_NAME() {
+		return EMPLOYEE_NAME;
+	}
+	public void setEMPLOYEE_NAME(String eMPLOYEE_NAME) {
+		EMPLOYEE_NAME = eMPLOYEE_NAME;
+	}
+	public String getDEPT_ID() {
+		return DEPT_ID;
+	}
+	public void setDEPT_ID(String dEPT_ID) {
+		DEPT_ID = dEPT_ID;
+	}
+	public String getGENDER_ID() {
+		return GENDER_ID;
+	}
+	public void setGENDER_ID(String gENDER_ID) {
+		GENDER_ID = gENDER_ID;
+	}
+	public String getTELEPHONE_NUMBER() {
+		return TELEPHONE_NUMBER;
+	}
+	public void setTELEPHONE_NUMBER(String tELEPHONE_NUMBER) {
+		TELEPHONE_NUMBER = tELEPHONE_NUMBER;
+	}
+	public String getENTRY_DATE() {
+		return ENTRY_DATE;
+	}
+	public void setENTRY_DATE(String eNTRY_DATE) {
+		ENTRY_DATE = eNTRY_DATE;
+	}
+	public String getAGE() {
+		return AGE;
+	}
+	public void setAGE(String aGE) {
+		AGE = aGE;
+	}
+	public String getMAIL_ADDRESS() {
+		return MAIL_ADDRESS;
+	}
+	public void setMAIL_ADDRESS(String mAIL_ADDRESS) {
+		MAIL_ADDRESS = mAIL_ADDRESS;
 	}
 }
-
+	

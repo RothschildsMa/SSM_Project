@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>勤怠承認詳細</title>
+<script src="/js/jquery-3.7.0.min.js"></script>
 <style type="text/css">
 	body {
 		width: 80%;
@@ -55,13 +56,13 @@
 <body>
 	<div class="top">
 		<div class="condition">
-			<p>社員ID</p>
-			<p>勤怠年月</p>
+			<p>社員ID：E0001</p>
+			<p>勤怠年月：2023/08</p>
 		</div>
 		
 		<div class="control">
-			<button class="btn btn1">承認</button>
-			<button class="btn btn2">一括承認</button>
+			<button class="btn btn1" onclick="update()">承認</button>
+			<button class="btn btn2" onclick="update()">一括承認</button>
 			<button class="btn btn3">閉じる</button>
 		</div>
 	</div>
@@ -88,18 +89,18 @@
 			</thead>
 			<tbody>
 				<tr th:each="item:${Attendances}">
-					<td><input type="checkbox"/></td>
-					<td></td>
+					<td><input type="checkbox" id="myCheckbox" th:disabled="${item.statusId==2}"/></td>
+					<td name="attendanceDate" th:text="${#strings.substring(item.attendanceDate,8,10)}"></td>
 					<td></td>
 					<td th:text="${item.startTime}"></td>
 					<td th:text="${item.endTime}"></td>
 					<td th:text="${item.restHours}"></td>
 					<td th:text="${item.workingHours}"></td>
+					<td th:text="${item.overTimeHours}"></td>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
-					<td></td>
+					<td th:text="${item.statusName}"></td>
 					<td th:text="${item.remarks}"></td>
 				</tr>
 				
@@ -112,17 +113,41 @@
 					<th></th>
 					<th></th>
 					<th></th>
-					<th>9999</th>
-					<th>9999</th>
+					<th th:text="${Attendances[0].sumWork}"></th>
+					<th th:text="${Attendances[0].sumOver}"></th>
 				</tr>
 			</tfoot>
 			
 		</table>
 
 	</div>
-
+	<script>
+	function update(obj){
+		var Check = $("table input[type=checkbox]:checked");
+		console.log(Check.length)
+		if(Check.length==0){
+			alert("勤怠実績を選択してください")
+		}else{
+			var dates=new Array();
+			Check.each(function () {//遍历
+	            var row = $(this).parent("td").parent("tr");//获取选中行
+	            var id = row.find("[name='attendanceDate']").html();//获取值
+	            console.log(id);
+	            dates.push(id);
+	        })
+	        $.ajax({
+	        	url:'/attendance/update',
+                type:'POST',
+                data:{"dates":dates},
+                success:function (res) {
+                	alert(res)
+                	location.reload();
+                	}
+            	})
+	        console.log(dates)
+		}
+		
+    }
+	</script>
 </body>
 </html>
-<css>
-
-</css>
