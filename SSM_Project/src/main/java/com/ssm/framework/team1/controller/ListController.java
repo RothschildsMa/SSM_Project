@@ -30,6 +30,7 @@ public class ListController {
 	
 	@PostMapping("search")
 	public String search(SearchForm searchForm,Model model) {
+		
 		List<Employee> employeeList = listService.searchEmployee(searchForm);
 		model.addAttribute("employeeList", employeeList);
 		
