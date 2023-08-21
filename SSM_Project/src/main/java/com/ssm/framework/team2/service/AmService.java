@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssm.framework.team2.dao.AmInfoMapper;
 import com.ssm.framework.team2.entity.AmData;
+import com.ssm.framework.team2.form.AddForm;
 
 //Author Chin
 
@@ -17,6 +18,15 @@ public class AmService {
 
 	public List<AmData> getAmInfo() {
 		return mapper.findAinfo();
+	}
+	public void insert(AddForm form) {
+		form.setEmployeeId("E001");
+		form.setWorkingHours(1.5);
+		form.setAbsenceHours(1.0);
+		form.setStatusId(1);
+		
+		
+		mapper.add(form);
 	}
 
 }

@@ -5,7 +5,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ssm.framework.team2.dao.AmMapper">
+<mapper namespace="com.ssm.framework.team2.dao.AmInfoMapper">
 
 	<select id="findWorkingDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
@@ -48,6 +48,20 @@
 		</where>
 		GROUP BY LEFT（CALENDAR_DATE,6) ;
 	</select>
+	
+	<insert id="add">
+		INSERT INTO T_ATTENDANCE
+		(EMPLOYEE_ID,
+		ATTENDANCE_DATE,
+		START_TIME, END_TIME,
+		REST_HOURS, WORKING_HOURS,
+		OVERTIME_HOURS, ABSENCE_HOURS,
+		STATUS_ID, REMARKS)
+		VALUES
+		(#{employeeId}, #{attendanceDate}, #{startTime},
+		#{endTime}, #{restHours}, #{workingHours},
+		#{overtimeHours}, #{absenceHours}, #{statusId}, #{remarks})
+	</insert>
 </mapper>
 
         

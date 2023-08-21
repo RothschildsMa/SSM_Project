@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ssm.framework.team2.entity.AmData;
+import com.ssm.framework.team2.form.AddForm;
 
 //Author Chin
 
@@ -16,5 +17,7 @@ public interface AmInfoMapper {
 	List<AmData> findattendanceDays();
 
 	List<AmData> findAinfo();
+	
+	void add(AddForm form);
 
 }

@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ssm.framework.team2.entity.AmData;
+import com.ssm.framework.team2.form.AddForm;
 import com.ssm.framework.team2.service.AmService;
 
 //Author Chin
@@ -33,4 +35,16 @@ public class AMController {
 //		attendanceList.add(new AmData());
 //
 //		return attendanceList;
+	@GetMapping("/refresh")
+	public String test(AddForm addForm) {
+
+		return "refresh";
+	}
+	
+	@PostMapping("/insert")
+	public String test2(AddForm addForm) {
+		amService.insert(addForm);
+
+		return "refresh";
+	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            text-align: left; /* ここを追加 */
+            text-align: left;
         }
         label {
             display: inline-block;
@@ -54,28 +54,72 @@
             margin-right: 5px;
         }
     </style>
+    <script>
+        window.onload = function() {
+            const today = new Date().toISOString().split('T')[0];
+
+       
+            document.getElementById('日付').setAttribute('max', today);
+
+           
+            const restTimeInput = document.querySelector('input[name="休憩時間"]');
+            restTimeInput.addEventListener('input', function() {
+                if (parseFloat(restTimeInput.value) < 0) {
+                    restTimeInput.setCustomValidity('入力エラー');
+                } else {
+                    restTimeInput.setCustomValidity('');
+                }
+            });
+
+            const overtimeInput = document.querySelector('input[name="残業時間"]');
+            overtimeInput.addEventListener('input', function() {
+                if (parseFloat(overtimeInput.value) < 0) {
+                    overtimeInput.setCustomValidity('入力エラー');
+                } else {
+                    overtimeInput.setCustomValidity('');
+                }
+            });
+
+            
+            const startTimeInput = document.querySelector('input[name="作業開始時間"]');
+            const endTimeInput = document.querySelector('input[name="作業終了時間"]');
+
+            startTimeInput.addEventListener('change', function() {
+                endTimeInput.min = startTimeInput.value;
+                endTimeInput.value = startTimeInput.value;
+            });
+
+            endTimeInput.addEventListener('input', function() {
+                if (endTimeInput.value <= startTimeInput.value) {
+                    endTimeInput.setCustomValidity('入力エラー');
+                } else {
+                    endTimeInput.setCustomValidity('');
+                }
+            });
+        };
+    </script>
 </head>
 <body>
-    <form action="action.js">
+    <form th:action="@{/insert}" th:object="${addForm}" method="post">
         <div class="form-row">
             <label for="日付">日付：</label>
-            <input type="date" id="日付" name="日付" value="2023-08-17" />
+            <input type="date" id="日付" name="日付" th:field="*{attendanceDate}" />
         </div>
         <div class="form-row">
             <label for="作業開始時間">作業開始時間：</label>
-            <input type="time" name="作業開始時間" />
+            <input type="time" name="作業開始時間" th:field="*{startTime}"  />
         </div>
         <div class="form-row">
             <label for="作業終了時間">作業終了時間：</label>
-            <input type="time" name="作業終了時間" />
+            <input type="time" name="作業終了時間" th:field="*{endTime}"  />
         </div>
         <div class="form-row">
             <label for="休憩時間">休憩時間：</label>
-            <input type="number" step="0.01" />
+            <input type="number" step="0.01" name="休憩時間" th:field="*{restHours}"  />
         </div>
         <div class="form-row">
             <label for="残業時間">残業時間：</label>
-            <input type="number" step="0.01" />
+            <input type="number" step="0.01" name="残業時間" th:field="*{overtimeHours}"  />
         </div>
         <div class="form-row">
             <label for="状態">状態：</label>
@@ -97,7 +141,7 @@
         </div>
         <div class="form-row">
             <label for="備考">備考：</label>
-            <input type="text" name="備考" required maxlength="100" />
+            <input type="text" name="備考" required maxlength="100"  th:field="*{remarks}" />
         </div>
         <div class="form-buttons">
             <input type="submit" value="更新" />
@@ -107,3 +151,5 @@
     </form>
 </body>
 </html>
+
+

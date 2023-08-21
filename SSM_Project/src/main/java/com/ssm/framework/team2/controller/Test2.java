@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 
 public class Test2 {
-	@GetMapping("/refresh")
-	public String test() {
 
-		return "refresh";
-	}
 
 }
