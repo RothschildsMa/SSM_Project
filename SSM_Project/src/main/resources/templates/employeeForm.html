@@ -68,23 +68,23 @@
 </head>
 
 <body>
-	<form action="/employee/submit" method="post">
+	<form action="/employee/submit" th:object="${employeeForm}" method="post">
 		<div class="mes">
 			<table class="tablebox">
 				<tr>
 					<td width=200px><label for="id">社員ID</label></td>
-					<td><input type="text" id="id" name="id" class="input-long" maxlength="100" size="30"></td>
+					<td><input type="text" id="id" th:field="*{id}" class="input-long" maxlength="100" size="30"></td>
 				</tr>
 			
 				<tr>
 					<td><label for="name">氏名*</label></td>
-            		<td><input type="text" id="name" name="name" class="input-long" maxlength="100" size="30"></td>
+            		<td><input type="text" id="name" th:field="*{name}" class="input-long" maxlength="100" size="30"></td>
 				</tr>
 				
 				<tr>	
 		            <td><label for="department">所属*</label></td>
 					<td>
-						<select class="select-dep" id="department" name="department">
+						<select class="select-dep" id="department" th:field="*{department}">
 							<option value="D01">D01</option>
 							<option value="D02">D02</option>
 						</select>
@@ -94,32 +94,32 @@
 				<tr>
 					<td><label for="gender">性別*</label></td>
 					<td class="gender">
-						<input type="radio" id="gender" name="gender" value="male">男性 
-						<input type="radio" id="gender" name="gender" value="female">女性 
-						<input type="radio" id="gender" name="gender" value="unconfirmed" checked>未確認 
+						<input type="radio" id="gender" th:field="*{gender}" value="G01">男性 
+						<input type="radio" id="gender" th:field="*{gender}" value="G02">女性 
+						<input type="radio" id="gender" th:field="*{gender}" value="G00" checked>未確認 
 					</td>
 				</tr>
 			
 				<tr>
 					<td><label for="telephone">電話番号</label></td>
-					<td><input type="text" name="telephone" id="telephone" class="input-tel" maxlength="11"></td>
+					<td><input type="text" th:field="*{telephone}" id="telephone" class="input-tel" maxlength="11"></td>
 				</tr>
 			
 				<tr>
 					<td><label for="date">入社年月日</label></td>
 					<td>
-					<input type="date" name="date" id="date" min="1968-12-31" max="2024-02-10">
+					<input type="date" th:field="*{date}" id="date" min="1968-12-31" max="2024-02-10">
 					</td>
 				</tr>
 			
 				<tr>
 					<td><label for="age">年齢</label></td>
-					<td><input type="text" name="age" id="age" class="input-age" maxlength="2"></td>
+					<td><input type="text" th:field="*{age}" id="age" class="input-age" maxlength="2"></td>
 				</tr>
 			
 				<tr>
 					<td><label for="address">メールアドレス*</label></td>
-					<td><input type="text" name="address" id="address" class="input-long" maxlength="100"></td>
+					<td><input type="text" th:field="*{address}" id="address" class="input-long" maxlength="100"></td>
 				</tr>
 			</table>
 		</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.framework.team1.dao.EmployeeFormMapper">
+
+    <insert id="insertEmployeeForm">
+        INSERT INTO T_EMPLOYEE (
+        EMPLOYEE_ID,EMPLOYEE_NAME,PASSWORD,GENDER_ID,AGE,DEPT_ID,TELEPHONE_NUMBER,MAIL_ADDRESS,DEL_FLG,ENTRY_DATE)
+        VALUES (
+        #{id}, #{name},'12345678',#{gender}, #{age},#{department}, #{telephone},#{address},'0',#{date}
+        )
+    </insert>
+
+</mapper>
