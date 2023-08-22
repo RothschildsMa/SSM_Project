@@ -17,7 +17,7 @@ public interface AmInfoMapper {
 	List<AmData> findAttendanceDays();
 
 
-	List<AmData> findinfo();
+	List<AmData> findAinfo();
 	
 
 	void add(AddForm form);

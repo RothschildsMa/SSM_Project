@@ -18,7 +18,7 @@ public class AmService {
 
 	public List<AmData> getAmInfo() {
 
-		return mapper.findinfo();
+		return mapper.findAinfo();
 
 	}
 
