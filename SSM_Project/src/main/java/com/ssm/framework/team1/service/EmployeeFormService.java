@@ -27,7 +27,7 @@ public class EmployeeFormService {
 	    }
 	
 	 public void updateEmployee(EmployeeForm employeeForm) {
-	        employeeFormMapper.updateEmployee(employeeForm);
+	        employeeFormMapper.updateEmployeeForm(employeeForm);
 	    }
     
 }

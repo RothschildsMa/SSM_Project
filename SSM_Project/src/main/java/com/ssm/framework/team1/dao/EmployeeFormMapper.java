@@ -17,7 +17,7 @@ public interface EmployeeFormMapper {
     
     // 更新用
     @Update("UPDATE T_EMPLOYEE SET EMPLOYEE_NAME = #{EMPLOYEE_NAME}, GENDER_ID = #{GENDER_ID}, AGE = #{AGE}, DEPT_ID = #{DEPT_ID}, TELEPHONE_NUMBER = #{TELEPHONE_NUMBER}, MAIL_ADDRESS = #{MAIL_ADDRESS} WHERE EMPLOYEE_ID = #{EMPLOYEE_ID}")
-    void updateEmployee(EmployeeForm employeeForm);
+    void updateEmployeeForm(EmployeeForm employeeForm);
     
     @Select("SELECT EMPLOYEE_NAME, GENDER_ID, AGE, DEPT_ID, TELEPHONE_NUMBER, MAIL_ADDRESS, ENTRY_DATE FROM T_EMPLOYEE WHERE EMPLOYEE_ID = #{EMPLOYEE_ID}")
     EmployeeForm getEmployeeById(String EMPLOYEE_ID);
