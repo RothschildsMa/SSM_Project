@@ -17,15 +17,19 @@ public class AmService {
 	private AmInfoMapper mapper;
 
 	public List<AmData> getAmInfo() {
+<<<<<<< HEAD
 		return mapper.findinfo();
+=======
+		return mapper.findAInfo();
+>>>>>>> branch 'main' of https://github.com/RothschildsMa/SSM_Project.git
 	}
+
 	public void insert(AddForm form) {
-		form.setEmployeeId("E001");
-		form.setWorkingHours(1.5);
-		form.setAbsenceHours(1.0);
-		form.setStatusId(1);
-		
-		
+//		form.setEmployeeId("E001");
+//		form.setWorkingHours(1.5);
+//		form.setAbsenceHours(1.0);
+//		form.setStatusId(1);
+
 		mapper.add(form);
 	}
 

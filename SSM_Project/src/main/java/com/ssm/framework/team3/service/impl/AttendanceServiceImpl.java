@@ -1,6 +1,7 @@
 package com.ssm.framework.team3.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,13 @@ public class AttendanceServiceImpl implements AttendanceService {
 	AttendanceMapper attendanceMapper;
 	
 	@Override
-	public List<Attendance> getAll() {
-		return attendanceMapper.getAll();
+	public List<Attendance> getAll(String date,String id) {
+		return attendanceMapper.getAll(date,id);
+	}
+
+	@Override
+	public void updateReq(List<String> dates) {
+		attendanceMapper.updateReq(dates);
 	}
 
 }
