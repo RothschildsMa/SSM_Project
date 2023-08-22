@@ -11,13 +11,14 @@
 <body>
 	<h1>LOGO</h1>
 	<form th:action="@{logout}" method="post">
+	<div id="buttonContainer">
+			<button id="logoutButton">Logout</button>
+		</div>
 		<div>
 			<label for="name">社員ID</label> <input type="text" name="name" />
 		</div>
 
-		<div id="buttonContainer">
-			<button id="logoutButton">Logout</button>
-		</div>
+	
 
 		<div id="selectContainer">
 			<label for="busyo">所属部門</label> <select id="mainSelect">
