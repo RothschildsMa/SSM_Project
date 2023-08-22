@@ -10,7 +10,7 @@ import com.ssm.framework.team2.entity.Status;
 @Mapper
 public interface StatusMapper {
 
-    @Select("SELECT * FROM status")
+    @Select("SELECT * FROM M_STATUS")
     List<Status> findStatusName();
 
     

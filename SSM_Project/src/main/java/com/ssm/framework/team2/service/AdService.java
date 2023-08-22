@@ -1,20 +1,21 @@
 package com.ssm.framework.team2.service;
 
 import org.hibernate.mapping.List;
-import org.springframework.boot.SpringApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import com.ssm.framework.team2.dao.AdMapper;
+import com.ssm.framework.team2.form.SearchForm;
+import com.ssm.framework.team3.bean.Attendance;
 
 @Service
 public class AdService {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AdService.class, args);
-	}
-@GetMapping()
-	public static List getAttendanceById(String string) {
-		
-		return null;
-	}
+	@Autowired
+    private AdMapper adMapper;
+
+    public List<Attendance> searchAttendance(SearchForm searchForm) {
+        return adMapper.searchAttendance(searchForm);
+    }
 
 }
