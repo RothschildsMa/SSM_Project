@@ -14,7 +14,7 @@
 		<where>
 			DEL_FLG = 0
 			<if test="employeeId !=null and employeeId !=''">
-				AND EMPLOYEE_ID = #{employeeId}
+				AND EMPLOYEE_ID = #{employeeId}　
 			</if>
 		</where>
 	</select>
