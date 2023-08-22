@@ -12,7 +12,7 @@ public class AdService {
 		SpringApplication.run(AdService.class, args);
 	}
 @GetMapping()
-	public List getAttendanceById(String string) {
+	public static List getAttendanceById(String string) {
 		
 		return null;
 	}

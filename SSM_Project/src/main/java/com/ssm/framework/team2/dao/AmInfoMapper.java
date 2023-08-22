@@ -14,10 +14,10 @@ public interface AmInfoMapper {
 
 	List<AmData> findWorkingDays();
 
-	List<AmData> findattendanceDays();
+	List<AmData> findAttendanceDays();
 
-	List<AmData> findAinfo();
-	
+	List<AmData> findAInfo();
+
 	void add(AddForm form);
 
 }

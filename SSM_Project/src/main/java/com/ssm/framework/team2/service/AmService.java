@@ -17,15 +17,15 @@ public class AmService {
 	private AmInfoMapper mapper;
 
 	public List<AmData> getAmInfo() {
-		return mapper.findAinfo();
+		return mapper.findAInfo();
 	}
+
 	public void insert(AddForm form) {
 //		form.setEmployeeId("E001");
 //		form.setWorkingHours(1.5);
 //		form.setAbsenceHours(1.0);
 //		form.setStatusId(1);
-		
-		
+
 		mapper.add(form);
 	}
 

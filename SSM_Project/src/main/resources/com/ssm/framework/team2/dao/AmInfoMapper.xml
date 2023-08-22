@@ -9,46 +9,53 @@
 
 	<select id="findWorkingDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(CALENDAR_DATE, 6) AS '年月', COUNT(年月)
-		FROM CALENDAR_DATE
+		SELECT LEFT(CALENDAR_DATE,6) AS '年月', COUNT(年月) AS 'COUNT'
+		FROM
+		M_CALENDAR
 		<where>DEL_FLG = 0 AND HOLIDAY_FLG = 0
-			AND LEFT(CALENDAR_DATE, 6) =
+			AND LEFT(CALENDAR_DATE,6) =
 			#{WorkingDays}
 		</where>
-		GROUP BY LEFT(CALENDAR_DATE, 6)
+		GROUP BY LEFT(CALENDAR_DATE,6)
 	</select>
 
 	<select id="findattendanceDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(CALENDAR_DATE, 6) AS '年月', COUNT(年月)
-		FROM CALENDAR_DATE
-		<where>HOLIDAY_FLG = 0 WORKING_HOURS != 0
-			AND LEFT(CALENDAR_DATE, 6) =
-			#{WorkingDays}
+		SELECT LEFT(CALENDAR_DATE,6) AS '年月', COUNT(年月) AS 'COUNT'
+		FROM
+		M_CALENDAR
+		<where>HOLIDAY_FLG = 0 AND WORKING_HOURS != 0
+			AND LEFT(CALENDAR_DATE,6)
+			=
+			#{AttendanceDays}
 		</where>
-		GROUP BY LEFT(CALENDAR_DATE, 6)
+		GROUP BY LEFT(CALENDAR_DATE,6)
 	</select>
 
 	<select id="findAInfo"
 		resultType="com.ssm.framework.team2.entity.AmData">
-
-		SELECT LEFT（CALENDAR_DATE,6),SUM(ABSENCE_HOURS) ,SUM(WORKING_HOURS),
-		SUM(OVERTIME_HOURS)FROM T_ATTENDANCE
-		<where>
-			del_flg = 0
-			<if test="absentHours != null and absentHours !=''">
-				and SUM(ABSENCE_HOURS) =#{absentHours}
-			</if>
-			<if test="workingHours != null and workingHours != ''">
-				and SUM(WORKING_HOURS) =#{workingHours}
-			</if>
-			<if test="overtimeHours != null and overtimeHours !=''">
-				and SUM(OVERTIME_HOURS) =#{overtimeHours}
-			</if>
-		</where>
-		GROUP BY LEFT（CALENDAR_DATE,6) ;
+		SELECT LEFT(M_CALENDAR.CALENDAR_DATE, 6) AS '年月',
+		SUM(ABSENCE_HOURS) AS ABSENCE_HOURS,
+		SUM(WORKING_HOURS) AS WORKING_HOURS,
+		SUM(OVERTIME_HOURS) AS OVERTIME_HOURS
+		FROM T_ATTENDANCE
+		JOIN M_CALENDAR ON LEFT(T_ATTENDANCE.ATTENDANCE_DATE, 6) =
+		LEFT(M_CALENDAR.CALENDAR_DATE, 6)
+		WHERE T_ATTENDANCE.del_flg = 0
+		<if test="absentHours != null and absentHours !=''">
+			and ABSENCE_HOURS = #{absentHours}
+		</if>
+		<if test="workingHours != null and workingHours != ''">
+			and WORKING_HOURS = #{workingHours}
+		</if>
+		<if test="overtimeHours != null and overtimeHours !=''">
+			and OVERTIME_HOURS = #{overtimeHours}
+		</if>
+		GROUP BY LEFT(M_CALENDAR.CALENDAR_DATE, 6)
 	</select>
-	
+
+
+
 	<insert id="add">
 		INSERT INTO T_ATTENDANCE
 		(EMPLOYEE_ID,
@@ -59,8 +66,10 @@
 		STATUS_ID, REMARKS)
 		VALUES
 		(#{employeeId}, #{attendanceDate}, #{startTime},
-		#{endTime}, #{restHours}, #{workingHours},
-		#{overtimeHours}, #{absenceHours}, #{statusId}, #{remarks})
+		#{endTime},
+		#{restHours}, #{workingHours},
+		#{overtimeHours}, #{absenceHours},
+		#{statusId}, #{remarks})
 	</insert>
 </mapper>
 

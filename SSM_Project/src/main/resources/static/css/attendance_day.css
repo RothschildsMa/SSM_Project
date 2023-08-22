@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 /*勤怠情報一覧（日別）.css */
 table {
     border-collapse: collapse;
     width: 100%;
+=======
+
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+>>>>>>> branch 'main' of https://github.com/RothschildsMa/SSM_Project
 }
 
 th, td {
