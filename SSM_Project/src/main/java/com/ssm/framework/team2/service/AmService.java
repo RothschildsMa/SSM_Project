@@ -17,7 +17,7 @@ public class AmService {
 	private AmInfoMapper mapper;
 
 	public List<AmData> getAmInfo() {
-		return mapper.findAinfo();
+		return mapper.findinfo();
 	}
 	public void insert(AddForm form) {
 		form.setEmployeeId("E001");
