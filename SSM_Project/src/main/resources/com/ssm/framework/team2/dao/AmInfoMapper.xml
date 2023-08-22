@@ -9,38 +9,44 @@
 
 	<select id="findWorkingDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(CALENDAR_DATE,6) AS '年月', COUNT(年月) AS 'COUNT'
+		SELECT LEFT(CALENDAR_DATE,7) AS Y_MONTH,
+		COUNT(LEFT(CALENDAR_DATE,7)) AS WORKING_DAYS
 		FROM
 		M_CALENDAR
-		<where>DEL_FLG = 0 AND HOLIDAY_FLG = 0
-			AND LEFT(CALENDAR_DATE,6) =
-			#{WorkingDays}
-		</where>
-		GROUP BY LEFT(CALENDAR_DATE,6)
+		WHERE
+		DEL_FLG = 0 AND
+		HOLIDAY_FLG = 0
+		GROUP BY LEFT(CALENDAR_DATE,7)
 	</select>
 
-	<select id="findattendanceDays"
+	<select id="findAttendanceDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(CALENDAR_DATE,6) AS '年月', COUNT(年月) AS 'COUNT'
+		SELECT LEFT(ATTENDANCE_DATE,7) AS A_days,
+		COUNT(LEFT(ATTENDANCE_DATE,7)) AS
+		ATTENDANCE_DAYS
 		FROM
-		M_CALENDAR
-		<where>HOLIDAY_FLG = 0 AND WORKING_HOURS != 0
-			AND LEFT(CALENDAR_DATE,6)
-			=
-			#{AttendanceDays}
-		</where>
-		GROUP BY LEFT(CALENDAR_DATE,6)
+		T_ATTENDANCE
+
+		WHERE
+		DEL_FLG = 0 AND
+
+		WORKING_HOURS != 0
+		GROUP BY
+		LEFT(ATTENDANCE_DATE,7)
 	</select>
 
 	<select id="findAInfo"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(M_CALENDAR.CALENDAR_DATE, 6) AS '年月',
-		SUM(ABSENCE_HOURS) AS ABSENCE_HOURS,
-		SUM(WORKING_HOURS) AS WORKING_HOURS,
+		SELECT LEFT(ATTENDANCE_DATE,7) AS A_INFO,
+		SUM(ABSENCE_HOURS)
+		AS ABSENCE_HOURS,
+		SUM(WORKING_HOURS) AS
+		WORKING_HOURS,
 		SUM(OVERTIME_HOURS) AS OVERTIME_HOURS
 		FROM T_ATTENDANCE
-		JOIN M_CALENDAR ON LEFT(T_ATTENDANCE.ATTENDANCE_DATE, 6) =
-		LEFT(M_CALENDAR.CALENDAR_DATE, 6)
+		JOIN M_CALENDAR
+		ON LEFT(T_ATTENDANCE.ATTENDANCE_DATE,7) =
+		LEFT(M_CALENDAR.CALENDAR_DATE, 7)
 		WHERE T_ATTENDANCE.del_flg = 0
 		<if test="absentHours != null and absentHours !=''">
 			and ABSENCE_HOURS = #{absentHours}
