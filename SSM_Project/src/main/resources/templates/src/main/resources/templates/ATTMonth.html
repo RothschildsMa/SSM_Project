@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>勤怠情報一覧（月別）</title>
+	<link rel="stylesheet" type="text/css" href="/ATTMonth.css">
+</head>
+<body>
+    <h1>勤怠情報一覧（月別）</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>社員ID </th><td th:text="${}"></td></tr>
+                <th>社員名 </th><td th:text="${}"></td></tr>
+                <th>所属部門 </th><td th:text="${}"></td></tr>
+            </tr>
+            <tr><th></th></tr>
+            <tr>
+                <th>年度</th>
+                <th></th>
+            </tr>
+            <tr><th></th></tr>
+            <tr>
+                <th>月</th>
+                <th>営業日数</th>
+                <th>出勤日数</th>
+                <th>欠勤日数</th>
+                <th>実働時間（H）</th>
+                <th>残業時間（H）</th>
+                <th>コメント</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="">
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+                <td th:text=""></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="button">戻る</button>
+</body>
+</html>
