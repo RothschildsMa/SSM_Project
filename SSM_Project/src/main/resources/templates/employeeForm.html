@@ -58,14 +58,18 @@
     color:black;
     border-radius:4px;
     margin: 0 auto 10px;
-
+}
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-left: 5px;
 }
 </style>
 <head>
 	<meta charset="UTF-8">
-	<title>登録画面</title>
-   
+    <title th:text="${isNewEntry} ? '登録画面' : '修正画面'"></title> 
 </head>
+
 
 <body>
 	<form action="/employee/submit" th:object="${employeeForm}" method="post">
