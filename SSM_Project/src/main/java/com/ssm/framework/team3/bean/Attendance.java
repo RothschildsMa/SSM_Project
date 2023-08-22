@@ -41,6 +41,8 @@ public class Attendance implements Serializable {
 	private BigDecimal sumOver;
 	
 	private String statusName;
+	
+	private String weekDay;
 
 	public String getEmployeeId() {
 		return employeeId;
@@ -189,6 +191,15 @@ public class Attendance implements Serializable {
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}
+	
+
+	public String getWeekDay() {
+		return weekDay;
+	}
+
+	public void setWeekDay(String weekDay) {
+		this.weekDay = weekDay;
+	}
 
 	@Override
 	public String toString() {
@@ -197,8 +208,10 @@ public class Attendance implements Serializable {
 				+ ", overTimeHours=" + overTimeHours + ", absenceHours=" + absenceHours + ", statusId=" + statusId
 				+ ", remarks=" + remarks + ", delFlg=" + delFlg + ", createDate=" + createDate + ", createUser="
 				+ createUser + ", updateDate=" + updateDate + ", updateUser=" + updateUser + ", sumWork=" + sumWork
-				+ ", sumOver=" + sumOver + ", statusName=" + statusName + "]";
+				+ ", sumOver=" + sumOver + ", statusName=" + statusName + ", weekDay=" + weekDay + "]";
 	}
+
+	
 
 	
 }

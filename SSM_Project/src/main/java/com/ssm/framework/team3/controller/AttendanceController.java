@@ -22,7 +22,7 @@ public class AttendanceController {
 	
 	@RequestMapping("/info")
     public String findAll(Model model){
-		String date="2023/08";
+		String date="2023-08";
 		String id="E0001";
 		List<Attendance> aList = attendanceService.getAll(date,id);
 		System.out.println("列表"+aList);
