@@ -57,7 +57,7 @@
 	<div class="top">
 		<div class="condition">
 			<p>社員ID：E0001</p>
-			<p>勤怠年月：2023/08</p>
+			<p>勤怠年月：2023-08</p>
 		</div>
 		
 		<div class="control">
@@ -91,7 +91,7 @@
 				<tr th:each="item:${Attendances}">
 					<td><input type="checkbox" id="myCheckbox" th:disabled="${item.statusId==2}"/></td>
 					<td name="attendanceDate" th:text="${#strings.substring(item.attendanceDate,8,10)}"></td>
-					<td></td>
+					<td th:text="${item.weekDay}"></td>
 					<td th:text="${item.startTime}"></td>
 					<td th:text="${item.endTime}"></td>
 					<td th:text="${item.restHours}"></td>
