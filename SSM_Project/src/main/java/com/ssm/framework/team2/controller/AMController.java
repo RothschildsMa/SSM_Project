@@ -50,6 +50,6 @@ public class AMController {
 			  
 		amService.insert(addForm);
 
-		return "redirect:/attendance_day";
+		return "redirect:/search1";
 	}
 }

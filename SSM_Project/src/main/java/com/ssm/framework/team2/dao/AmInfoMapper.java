@@ -16,13 +16,10 @@ public interface AmInfoMapper {
 
 	List<AmData> findAttendanceDays();
 
-<<<<<<< HEAD
+
 	List<AmData> findinfo();
 	
-=======
-	List<AmData> findAInfo();
 
->>>>>>> branch 'main' of https://github.com/RothschildsMa/SSM_Project.git
 	void add(AddForm form);
 
 }

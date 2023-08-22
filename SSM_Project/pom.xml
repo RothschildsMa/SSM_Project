@@ -70,11 +70,7 @@
 			<version>3.0.2</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.ssm</groupId>
-			<artifactId>Spring0808</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
