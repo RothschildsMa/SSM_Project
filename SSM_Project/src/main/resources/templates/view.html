@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>LOGO</h1>
-	<form th:action="@{confirm}" method="post">
+	<form th:action="@{logout}" method="post">
 		<div>
 			<label for="name">社員ID</label> <input type="text" name="name" />
 		</div>
@@ -48,8 +48,11 @@
 		</div>
 
 		<div>
-			<label for="birth">勤怠年月：</label> <input type="date" name="birth" />
-		</div>
+                    <label for="entryDate">勤怠年月:</label>
+                    <input type="date" id="entryDateFrom" >
+                    <span>~</span>
+                    <input type="date" id="entryDateTo" >
+                </div>
 
 		<input type="submit" value="検索"> <input type="submit"
 			value="閉じる">
