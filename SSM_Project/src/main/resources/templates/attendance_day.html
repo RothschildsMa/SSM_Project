@@ -11,6 +11,15 @@
     <form id="selectForm" th:object="${searchForm}">
         <table>
             <thead>
+            <tr>
+                <th>社員ID</th>
+                <td th:text="${employeeId}"></td>
+                <th>氏名</th>
+                <td th:text="${employeeName}"></td>
+                <th>所属部門</th>
+                <td th:text="${department}"></td>
+            </tr>
+            
                 <tr>
                     <th colspan="6"></th>
                 </tr>
