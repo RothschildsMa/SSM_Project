@@ -3,9 +3,12 @@ package com.ssm.framework.team1.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.ssm.framework.team1.entity.EmployeeForm;
 import com.ssm.framework.team1.service.EmployeeFormService;
+
+import jakarta.validation.Valid;
 
 
 
@@ -47,7 +50,13 @@ public class EmployeeFormController {
 	}
 
 	@PostMapping("/submit")
-	public String createOrUpdateEmployee(EmployeeForm employeeForm, @RequestParam("button") String button) {
+	public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm, 
+			BindingResult bindingResult, @RequestParam("button") String button) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "employeeForm";
+//        }
+//        
 	    if ("登録".equals(button)) {
 	        String maxId = employeeFormService.getMaxEmployeeId();
 	        String newId = generateNextId(maxId);
@@ -61,13 +70,6 @@ public class EmployeeFormController {
 	
 	    return "redirect:/employeelist";
 	}
-
-//		if (form.getEmployeeId() == null || form.getEmployeeId().isEmpty() ||
-//				form.getName() == null || form.getName().isEmpty() ||
-//				form.getDepartment() == null || form.getDepartment().isEmpty() ||
-//				form.getAddress() == null || form.getAddress().isEmpty()) {
-//			 return "result-failure";
-//		}
 
 	private String generateNextId(String maxId) {
         if (maxId == null || maxId.isEmpty()) {
