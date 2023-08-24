@@ -1,5 +1,13 @@
 package com.ssm.framework.team2.entity;
 
-public class Status {
+import java.io.Serializable;
+
+import lombok.Data;
+
+@Data
+public class Status implements Serializable{
+
+	private Integer statusId;
+	private String statusName;
 
 }

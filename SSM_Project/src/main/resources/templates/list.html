@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <title>Employee List</title>
  <link rel="stylesheet" type="text/css" href="css/list.css">
+ <script src="js/form.js"></script>
 </head>
 <body>
-	<form id="listForm" th:object="${searchForm}">
+	<form  id="listForm" th:object="${searchForm}">
     <div id="inputButtonContainer">
         <div id="inputContainer">   
         	<div >      
@@ -15,14 +16,14 @@
                 </div>
                 <div>
                     <label for="entryDate">入社年月日:</label>
-                    <input type="date" id="entryDateFrom" th:field="*{entryDateFrom}">
+                    <input type="date" id="entryDateFrom" >
                     <span>~</span>
-                    <input type="date" id="entryDateTo" th:field="*{entryDateTo}">
+                    <input type="date" id="entryDateTo" >
                 </div>
             </div> 
             <div id="selectContainer">
             	<label for="deptId">所属:</label>
-                <select id="deptId" th:field="*{deptId}">
+                <select id="deptId" >
                 <option value="">D01</option>
                 <option value="">D02</option>
                 </select>
@@ -33,8 +34,8 @@
         </div>
     </div>
     <div id="buttonContainer">
-        <button id="addButton">追加</button>
-        <button id="deleteButton" onclick="submitForm('listForm','/delete','delete')">削除</button>
+        <button id="addButton" onclick="submitForm('listForm','/employee/form')">追加</button>
+        <button id="deleteButton" >削除</button>
         <button id="closeButton">閉じる</button>
     </div>
     
@@ -81,5 +82,4 @@
     </div>
     </form>
 </body>
-
 </html>

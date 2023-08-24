@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.framework.team2.dao.AdMapper">
+
+    <select id="findById" resultType="com.ssm.framework.team2.entity.Attendance">
+        SELECT t1.*, t2.STATUS_NAME AS STATUS_NAME
+         FROM T_ATTENDANCE t1
+         LEFT JOIN M_STATUS t2 ON t1.STATUS_ID = t2.STATUS_ID
+        WHERE EMPLOYEE_ID=#{employeeId} AND t1.DEL_FLG=0;
+    </select>
+    
+    <select id="findByDate" resultType="com.ssm.framework.team2.entity.Attendance">
+    SELECT * FROM T_ATTENDANCE WHERE 
+    EMPLOYEE_ID=#{employeeId} AND
+    ATTENDANCE_DATE = #{attendanceDate}
+    
+    </select>
+    
+    <!-- 条件指定検索 -->
+    <select id="search" resultType="com.ssm.framework.team2.entity.Attendance">
+        SELECT t1.*, t2.STATUS_NAME AS STATUS_NAME
+         FROM T_ATTENDANCE t1
+         LEFT JOIN M_STATUS t2 ON t1.STATUS_ID = t2.STATUS_ID
+        WHERE
+        EMPLOYEE_ID=#{employeeId} AND  t1.DEL_FLG=0
+            <if test="attendanceDate != null and attendanceDate != ''">
+                AND ATTENDANCE_DATE = #{attendanceDate}
+            </if>
+            <if test="statusId != null and statusId != '000'">
+                AND t1.STATUS_ID = #{statusId}
+            </if>
+    </select>
+	
+	
+	<update id="logicalDelete">
+		UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE EMPLOYEE_ID=#{employeeId} AND ATTENDANCE_DATE = #{attendanceDate}
+	</update>
+</mapper>

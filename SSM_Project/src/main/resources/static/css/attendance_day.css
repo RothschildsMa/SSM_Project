@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 /*勤怠情報一覧（日別）.css */
 table {
     border-collapse: collapse;
     width: 100%;
-=======
-
- *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
->>>>>>> branch 'main' of https://github.com/RothschildsMa/SSM_Project
 }
 
 th, td {
@@ -22,12 +14,10 @@ th {
     background-color: lightgray;
 }
 
-
 #date, #status {
     width: 80%;
     padding: 6px;
 }
-
 
 .button-group {
     text-align: right;
@@ -46,21 +36,22 @@ th {
     cursor: pointer;
     border-radius: 4px;
 }
+
 .btn {
-  display: inline-block;
-  padding: 2px 7px;
-  background-color: #4CAF50; 
-  color: #ffffff; 
-  border: none; 
-  border-radius: 5px; 
-  text-align: center;
-  text-decoration: none; 
-  font-size: 16px;
-  cursor: pointer; 
-  transition: background-color 0.3s; 
+    display: inline-block;
+    padding: 2px 7px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 /* ホバー時のスタイル */
 .btn:hover {
-  background-color: #45a049; 
+    background-color: #45a049;
 }

@@ -1,29 +1,37 @@
 package com.ssm.framework.team2.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.ssm.framework.team1.form.SearchForm;
 import com.ssm.framework.team2.dao.StatusMapper;
+import com.ssm.framework.team2.entity.Attendance;
+import com.ssm.framework.team2.entity.Status;
+import com.ssm.framework.team2.form.SearchForm;
 import com.ssm.framework.team2.service.AdService;
 
 @Controller
 public class ADController {
 	@Autowired
-private AdService adService;
+	private AdService adService;
+	
+	
+	@Autowired
+	private StatusMapper statusMapper;
+	
 
-    @Autowired
-    private StatusMapper statusMapper;
-
-    @GetMapping("/search1")
-    public String showEditPage(@ModelAttribute SearchForm searchForm, Model model) {
+    @GetMapping("/attendance_day")
+    public String showAttendanceList(SearchForm searchForm, Model model) {
+      
+        List<Attendance> attendanceList = adService.getAttendanceById("E0001");
        
-//    	List<AttendanceList>attendanceList = AdService.getAttendanceById("001");
-//        List<Status> statusList = statusMapper.findStatusName();
-//        model.addAttribute("statusList", statusList);
-//        model.addAttribute("attendanceList", attendanceList);
+        List<Status> statusList = statusMapper.FindStatusName();
+        
+        model.addAttribute("statusList", statusList);
+        model.addAttribute("attendanceList", attendanceList);
+        
         return "Attendance_day";
     }
 

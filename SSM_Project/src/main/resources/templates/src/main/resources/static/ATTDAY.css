@@ -1,0 +1,58 @@
+/*勤怠情報一覧（日別）.css */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: lightgray;
+}
+
+/* 调整日期输入框和状态选择框的样式 */
+#date, #status {
+    width: 80%;
+    padding: 6px;
+}
+
+/* 调整按钮组的样式 */
+.button-group {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn {
+  display: inline-block;
+  padding: 2px 7px;
+  background-color: #4CAF50; /* 例: 緑色の背景 */
+  color: #ffffff; /* 例: 文字色は白 */
+  border: none; /* ボーダーを非表示に */
+  border-radius: 5px; /* 角を丸くする */
+  text-align: center;
+  text-decoration: none; /* テキストの下線を非表示に */
+  font-size: 16px;
+  cursor: pointer; /* カーソルをポインターに変更 */
+  transition: background-color 0.3s; /* 背景色の遷移効果を追加 */
+}
+
+/* ホバー時のスタイル */
+.btn:hover {
+  background-color: #45a049; /* ホバー時の背景色を少し暗く */
+}

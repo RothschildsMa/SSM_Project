@@ -20,7 +20,7 @@ public class ListController {
 	@Autowired
 	private ListService listService;
 	
-	@GetMapping("employeelist")
+	@GetMapping("/employeelist")
 	public String listView(SearchForm searchForm,Model model) {
 		List<Employee> employeeList = listService.getAllEmployee();
 		
@@ -28,7 +28,7 @@ public class ListController {
 		return "list";
 	}
 	
-	@PostMapping("search")
+	@PostMapping("/search")
 	public String search(SearchForm searchForm,Model model) {
 		
 		List<Employee> employeeList = listService.searchEmployee(searchForm);
@@ -37,7 +37,7 @@ public class ListController {
 		return "list";
 	}
 	
-	@DeleteMapping("delete")
+	@DeleteMapping("/delete")
 	   public String deleteEmployee(@PathVariable("employeeId") String employeeId, Model model) {
 		List<Employee> employeeList = listService.deleteEmployeeById(employeeId);
 		model.addAttribute("employeeList", employeeList);

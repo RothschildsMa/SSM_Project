@@ -94,7 +94,7 @@ form{
 #buttonContainerSearch {
     display: flex;
     justify-content: flex-end;
-    margin-left: 950px;
+    margin-left: 580px;
     width: 100%;
 }
 
@@ -120,7 +120,7 @@ form{
 #buttonContainer {
     display: flex;
     justify-content: flex-end;
-    margin-left: -400px;
+    margin-left: -320px;
     width: 100%;
 }
 
