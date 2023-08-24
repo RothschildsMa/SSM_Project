@@ -71,6 +71,27 @@
 		#{overtimeHours}, #{absenceHours},
 		#{statusId}, #{remarks})
 	</insert>
+	
+	<update id="update">
+		UPDATE T_ATTENDANCE SET
+		START_TIME = #{startTime},
+		END_TIME = #{endTime},
+		REST_HOURS = #{restHours},
+		WORKING_HOURS = #{workingHours},
+		OVERTIME_HOURS = #{overtimeHours},
+		ABSENCE_HOURS = #{absenceHours},
+		STATUS_ID = #{statusId},
+		REMARKS = #{remarks},
+		update_date = CURRENT_TIMESTAMP
+		WHERE EMPLOYEE_ID=#{employeeId} AND DEL_FLG=0
+		AND ATTENDANCE_DATE = #{attendanceDate}
+	</update>
+	
+	<update id="logicalDelete">
+		UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE EMPLOYEE_ID=#{employeeId} AND ATTENDANCE_DATE = #{attendanceDate}
+	</update>
+	
+	
 </mapper>
 
         

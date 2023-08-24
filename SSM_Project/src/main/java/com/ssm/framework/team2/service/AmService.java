@@ -31,4 +31,9 @@ public class AmService {
 		mapper.add(form);
 	}
 
+	public void update(AddForm addForm) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

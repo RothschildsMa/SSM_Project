@@ -47,9 +47,19 @@ public class AMController {
 	@PostMapping("/insert")
 	public String test2(AddForm addForm) {
 	
-			  
+		addForm.setEmployeeId("E1000");	  
 		amService.insert(addForm);
 
-		return "redirect:/attendance_month";
-	}
+		return "redirect:/search1";
+		}
+		
+		
+//		@PostMapping("/update")
+//		public String test3(AddForm addForm) {
+//		
+//				  
+//			amService.update(addForm);
+//
+//			return "redirect:/attendance_day";
+//	}
 }
