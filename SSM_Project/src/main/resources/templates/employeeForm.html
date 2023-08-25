@@ -12,7 +12,7 @@
 	height:100px;
 }
 .tablebox{
-	width:67%;
+	width:80%;
 }
 .tablebox th{
 	text-align:left;
@@ -28,7 +28,7 @@
 	height:25px;
 }
 .input-long{
-	width:70%;
+	width:50%;
 }
 .input-tel,.select-dep{
 	width:120px;
@@ -70,10 +70,13 @@
     display: flex;
     align-items: center;
 }
+.asterisk{
+	color: red;
+}
 </style>
 <head>
 	<meta charset="UTF-8">
-    <title th:text="${isNewEntry} ? '登録画面' : '修正画面'"></title> 
+    <title th:text="${employeeForm.IsNewEntry} ? '登録画面' : '修正画面'"></title> 
 </head>
 
 
@@ -84,15 +87,16 @@
 				<tr>
 					<td width=200px><label for="EMPLOYEE_ID">社員ID</label></td>
 					<td>
-						<span th:if="${isNewEntry}" th:text="${employeeForm.EMPLOYEE_ID}"></span>
-	                    <span th:unless="${isNewEntry}"th:text="${EMPLOYEE_ID}"></span>
-                    </td>
+	                    <span th:text="${employeeForm.EMPLOYEE_ID}"></span>
+	                    <input type="hidden" th:field="*{EMPLOYEE_ID}" />
+	                    <input type="hidden" th:field="*{IsNewEntry}" />
+                	</td>
 				</tr>
 			
 				<tr>
-					<td><label for="EMPLOYEE_NAME">氏名*</label></td>
+					<td><label for="EMPLOYEE_NAME">氏名</label><label class="asterisk">*</label></td>
             		<td class="flex-align-center">
-            		<input type="text" id="EMPLOYEE_NAME" th:field="*{EMPLOYEE_NAME}" class="input-long" maxlength="100" size="30" th:value="${employeeForm.EMPLOYEE_NAME}" />
+            		<input type="text" id="EMPLOYEE_NAME" th:field="*{EMPLOYEE_NAME}" class="input-long" maxlength="100" size="30" />
             		<span th:errors="*{EMPLOYEE_NAME}" class="error-inline"></span>
             		</td>
 				</tr>
@@ -126,7 +130,7 @@
 				</tr>
 			
 				<tr>
-					<td><label for="ENTRY_DATE">入社年月日*</label></td>
+					<td><label for="ENTRY_DATE">入社年月日</label><label class="asterisk">*</label></td>
 					<td class="flex-align-center">
 					<input type="date" th:field="*{ENTRY_DATE}" id="ENTRY_DATE" min="1968-12-31" max="2024-02-10">
 					<span th:errors="*{ENTRY_DATE}" class="error-inline"></span>
@@ -142,7 +146,7 @@
 				</tr>
 			
 				<tr>
-					<td><label for="MAIL_ADDRESS">メールアドレス*</label></td>
+					<td><label for="MAIL_ADDRESS">メールアドレス</label><label class="asterisk">*</label></td>
 					<td  class="flex-align-center">
 					<input type="text" th:field="*{MAIL_ADDRESS}" id="MAIL_ADDRESS" class="input-long" maxlength="100">
 					<span th:errors="*{MAIL_ADDRESS}" class="error-inline"></span>
@@ -156,13 +160,13 @@
 				<input name="button" type="submit" value="閉じる" class="button">
 			</div>
 			
-			<div th:if="${isNewEntry}">
+			<div th:if="${employeeForm.IsNewEntry}">
 				<div class="bu-create">
 					<input name="button" type="submit" value="登録" class="button">
 				</div>
 	    	</div>
 	    
-	   		<div th:unless="${isNewEntry}">
+	   		<div th:unless="${employeeForm.IsNewEntry}">
 		        <div class="bu-create">
 		            <input name="button" type="submit" value="修正" class="button">
 		        </div>

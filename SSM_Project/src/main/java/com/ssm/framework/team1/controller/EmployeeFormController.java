@@ -20,13 +20,10 @@ public class EmployeeFormController {
 	
 		// 登録用
 		@GetMapping("/form")
-	    public String showCreateFormPage(Model model) {
-	        EmployeeForm newEmployee = new EmployeeForm();
-	        
+	    public String showCreateFormPage(@ModelAttribute("employeeForm") EmployeeForm employeeForm) {   
 			String newId = employeeFormService.getNewEmployeeId();
-	        newEmployee.setEMPLOYEE_ID(newId);
-	        
-	        setDifferentFormModel(model,newEmployee,true);
+			employeeForm.setEMPLOYEE_ID(newId);
+			employeeForm.setIsNewEntry(true);
 	        return "employeeForm";
 	    }
 
@@ -34,23 +31,20 @@ public class EmployeeFormController {
 		@GetMapping("/form/{EMPLOYEE_ID}")
 		public String showUpdateFormPage(@PathVariable String EMPLOYEE_ID, Model model){
 			EmployeeForm existingEmployee = employeeFormService.getEmployeeById(EMPLOYEE_ID);
-			
-			setDifferentFormModel(model,existingEmployee,false);
+			model.addAttribute("employeeForm",existingEmployee);
 			return "employeeForm";
 			
 		}
-		
-		public void setDifferentFormModel (Model model,EmployeeForm employeeForm,boolean isNewEntry) {
-				model.addAttribute("employeeForm", employeeForm);
-		        model.addAttribute("isNewEntry", isNewEntry);
-		}
-	
+
 		@PostMapping("/submit")
-		public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm, 
+		public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm,
 				BindingResult bindingResult, @RequestParam("button") String button) {
-			
+
+			if (bindingResult.hasErrors()) {
+	            return "employeeForm";
+	        }
+
 			if ("登録".equals(button)) {
-				employeeForm.setEMPLOYEE_ID(employeeFormService.getNewEmployeeId());
 				employeeFormService.createEmployee(employeeForm);
 
 			} else if ("修正".equals(button)) {
@@ -59,5 +53,4 @@ public class EmployeeFormController {
 	
 			return "redirect:/employeelist";
 		}
-
 }

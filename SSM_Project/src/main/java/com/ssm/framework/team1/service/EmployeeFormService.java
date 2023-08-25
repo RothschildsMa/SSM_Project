@@ -30,11 +30,11 @@ public class EmployeeFormService {
     
 	// 更新用
 	 public EmployeeForm getEmployeeById(String EMPLOYEE_ID) {
-	        return employeeFormMapper.getEmployeeById(EMPLOYEE_ID);
+		 return employeeFormMapper.getEmployeeById(EMPLOYEE_ID);
 	    }
 	
 	 public void updateEmployee(EmployeeForm employeeForm) {
-	        employeeFormMapper.updateEmployeeForm(employeeForm);
+		 employeeFormMapper.updateEmployeeForm(employeeForm);
 	    }
     
 }
