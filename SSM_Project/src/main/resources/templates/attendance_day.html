@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠情報一覧（日別）</title>
-    <link rel="stylesheet" type="text/css" href="css/attendance.css">
-    <!-- 移动script标签到</head>标签之前 -->
+    <link rel="stylesheet" type="text/css" href="css/attendance_day.css">
 </head>
 <body>
     <h1>勤怠情報一覧（日別）</h1>
     <form id="selectForm" th:object="${searchForm}">
         <table>
             <thead>
+            <tr>
+                <th>社員ID</th>
+                <td th:text="${employeeId}"></td>
+                <th>氏名</th>
+                <td th:text="${employeeName}"></td>
+                <th>所属部門</th>
+                <td th:text="${department}"></td>
+            </tr>
+            
                 <tr>
                     <th colspan="6"></th>
                 </tr>
@@ -21,10 +29,10 @@
                     <th>状態</th>
                     <td class="input-cell">
                         <select name="statusId" th:field="*{statusId}">
-                            <option value="000">選択してください</option>
+                            <option value="0">選択してください</option>
                             <option th:each="status : ${statusList}"
                                     th:value="${status.statusId}" th:text="${status.statusName}"
-                                    th:selected="${status.statusId == '000'}"></option>
+                                    th:selected="${status.statusId == '0'}"></option>
                         </select>
                     </td>
                     <td>

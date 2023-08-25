@@ -13,8 +13,15 @@ public class EmployeeFormService {
     private EmployeeFormMapper employeeFormMapper;
 	
 	// 登録用
-	public String getMaxEmployeeId() {
-        return employeeFormMapper.getMaxEmployeeId();
+	public String getNewEmployeeId() {
+		String maxId = employeeFormMapper.getMaxEmployeeId();
+		if (maxId == null || maxId.isEmpty()) {
+            return "E0001"; 
+        }
+        int number = Integer.parseInt(maxId.substring(1));
+        number++;
+        String newId = "E" + String.format("%04d", number);
+        return newId;
     }
 	 
     public void createEmployee(EmployeeForm employeeForm) {

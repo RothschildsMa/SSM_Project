@@ -51,18 +51,24 @@
 	td,th {
 	   text-align: center;
 	}
+	.num{
+		text-align:right;
+	}
+	.text{
+		text-align:left;
+	}
 </style>
 </head>
 <body>
 	<div class="top">
 		<div class="condition">
 			<p>社員ID：E0001</p>
-			<p>勤怠年月：2023/08</p>
+			<p>勤怠年月：2023-08</p>
 		</div>
 		
 		<div class="control">
 			<button class="btn btn1" onclick="update()">承認</button>
-			<button class="btn btn2" onclick="update()">一括承認</button>
+			<button class="btn btn2" onclick="updateAll()">一括承認</button>
 			<button class="btn btn3">閉じる</button>
 		</div>
 	</div>
@@ -91,17 +97,17 @@
 				<tr th:each="item:${Attendances}">
 					<td><input type="checkbox" id="myCheckbox" th:disabled="${item.statusId==2}"/></td>
 					<td name="attendanceDate" th:text="${#strings.substring(item.attendanceDate,8,10)}"></td>
+					<td th:text="${item.weekDay}"></td>
+					<td class="num" th:text="${item.startTime}"></td>
+					<td class="num" th:text="${item.endTime}"></td>
+					<td class="num" th:text="${item.restHours}"></td>
+					<td class="num" th:text="${item.workingHours}"></td>
+					<td class="num" th:text="${item.overTimeHours}"></td>
 					<td></td>
-					<td th:text="${item.startTime}"></td>
-					<td th:text="${item.endTime}"></td>
-					<td th:text="${item.restHours}"></td>
-					<td th:text="${item.workingHours}"></td>
-					<td th:text="${item.overTimeHours}"></td>
 					<td></td>
 					<td></td>
-					<td></td>
-					<td th:text="${item.statusName}"></td>
-					<td th:text="${item.remarks}"></td>
+					<td class="text" th:text="${item.statusName}"></td>
+					<td class="text" th:text="${item.remarks}"></td>
 				</tr>
 				
 			</tbody>
@@ -113,8 +119,8 @@
 					<th></th>
 					<th></th>
 					<th></th>
-					<th th:text="${Attendances[0].sumWork}"></th>
-					<th th:text="${Attendances[0].sumOver}"></th>
+					<th class="num" th:text="${Attendances[0].sumWork}"></th>
+					<th class="num" th:text="${Attendances[0].sumOver}"></th>
 				</tr>
 			</tfoot>
 			
@@ -122,7 +128,7 @@
 
 	</div>
 	<script>
-	function update(obj){
+	function update(){
 		var Check = $("table input[type=checkbox]:checked");
 		console.log(Check.length)
 		if(Check.length==0){
@@ -132,7 +138,6 @@
 			Check.each(function () {//遍历
 	            var row = $(this).parent("td").parent("tr");//获取选中行
 	            var id = row.find("[name='attendanceDate']").html();//获取值
-	            console.log(id);
 	            dates.push(id);
 	        })
 	        $.ajax({
@@ -147,6 +152,23 @@
 	        console.log(dates)
 		}
 		
+    }
+	function updateAll(){
+		var dates=new Array();
+		$("table tbody tr").each(function() {
+			  var value = $(this).find("[name='attendanceDate']").html();
+			  dates.push(value);
+			});
+		$.ajax({
+        	url:'/attendance/update',
+            type:'POST',
+            data:{"dates":dates},
+            success:function (res) {
+            	alert(res)
+            	location.reload();
+            	}
+        	})
+		console.log(dates);
     }
 	</script>
 </body>
