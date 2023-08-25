@@ -16,8 +16,13 @@
 			<if test="employeeId !=null and employeeId !=''">
 				AND EMPLOYEE_ID = #{employeeId}
 			</if>
+			<if test="deptId !=null and deptId !=''">
+				AND DEPT_ID = #{deptId}
+			</if>
+			
 		</where>
 	</select>
+
 	
 	<select id="deletebyId" resultType="com.ssm.framework.team1.entity.Employee">
 		DELETE * FROM T_EMPLOYEE 
