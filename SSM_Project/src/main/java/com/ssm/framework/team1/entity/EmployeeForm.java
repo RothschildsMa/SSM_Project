@@ -19,18 +19,20 @@ public class EmployeeForm {
 	private String DEPT_ID;
 	private String GENDER_ID = "G00";
 	
-	@Pattern(regexp = "0[36789]\\d{8,9}$", message = " ※ 正しい電話番号を入力してください")
+	@Pattern(regexp = "^|0[36789]\\d{8,9}$", message = " ※ 正しい電話番号を入力してください") //非必要输入
 	private String TELEPHONE_NUMBER;
 	
 	@NotEmpty(message = " ※ 入社年月日を入力してください")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String ENTRY_DATE;
 	
-    @Min(value = 16, message = " ※ 妥当な年齢を入力してください")
-    @Max(value = 65, message = " ※ 妥当な年齢を入力してください")
+	@Min(value = 16, message = " ※ 妥当な年齢を入力してください")
+	@Max(value = 65, message = " ※ 妥当な年齢を入力してください")
 	private Integer AGE;
-
-    @NotEmpty(message = " ※ メールアドレスを入力してください")
-    @Email(message = " ※ メールアドレスは正しいフォーマットで入力してください")
+	
+	@NotEmpty(message = " ※ メールアドレスを入力してください")
+	@Email(message = " ※ メールアドレスは正しいフォーマットで入力してください")
 	private String MAIL_ADDRESS;
+	
+	private boolean IsNewEntry;
 }

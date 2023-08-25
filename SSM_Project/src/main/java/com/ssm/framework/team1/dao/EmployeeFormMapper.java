@@ -16,7 +16,6 @@ public interface EmployeeFormMapper {
     String getMaxEmployeeId();
     
     // 更新用
-    @Update("UPDATE T_EMPLOYEE SET EMPLOYEE_NAME = #{EMPLOYEE_NAME}, GENDER_ID = #{GENDER_ID}, AGE = #{AGE}, DEPT_ID = #{DEPT_ID}, TELEPHONE_NUMBER = #{TELEPHONE_NUMBER}, MAIL_ADDRESS = #{MAIL_ADDRESS} WHERE EMPLOYEE_ID = #{EMPLOYEE_ID}")
     void updateEmployeeForm(EmployeeForm employeeForm);
     
     EmployeeForm getEmployeeById(String EMPLOYEE_ID);
