@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 import com.ssm.framework.team2.entity.AmData;
-import com.ssm.framework.team2.form.AddForm;
+
 import com.ssm.framework.team2.service.AmService;
 
 //Author Chin
@@ -32,6 +32,17 @@ public class AMController {
 		return "attendance_month";
 	}
 
+
+//	private List<AmData> getAmInfo() {
+//
+//		List<AmData> attendanceList = new ArrayList<>();
+//		attendanceList.add(new AmData());
+//		attendanceList.add(new AmData());
+//
+//		return attendanceList;
+	
+
+
 	@GetMapping("/month/{selectedYear}")
 	public String handleSubmit(@PathVariable String selectedYear, Model model) {
 		List<String> yearList = amService.getYear();
@@ -45,16 +56,6 @@ public class AMController {
 		return "attendance_month";
 	}
 
-	@GetMapping("/refresh")
-	public String test(AddForm addForm) {
 
-		return "refresh";
-	}
 
-	@PostMapping("/insert")
-	public String test2(AddForm addForm) {
-		amService.insert(addForm);
-
-		return "refresh";
-	}
 }

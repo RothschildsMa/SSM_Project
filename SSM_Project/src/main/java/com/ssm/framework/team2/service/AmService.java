@@ -37,13 +37,5 @@ public class AmService {
 		return ymmapper.findYM();
 	}
 
-	public void insert(AddForm form) {
-//		form.setEmployeeId("E001");
-//		form.setWorkingHours(1.5);
-//		form.setAbsenceHours(1.0);
-//		form.setStatusId(1);
-
-		mapper.add(form);
-	}
-
+	
 }
