@@ -8,30 +8,31 @@
 </head>
 <body>
 	<form  id="listForm" th:object="${searchForm}">
-    <div id="inputButtonContainer">
-        <div id="inputContainer">   
-        	<div >      
-                <div>
+    <div id="inputButtonContainer">  
+    		<div style="display:flex; flex-flow: row wrap; width: 900px; height: 50px; margin: 5px;">
+                <div id="inputContainerid" style="flex: 100px; margin: 5px">
                     <label for="employeeId">社員ID:</label><input type="text" id="employeeId" th:field="*{employeeId}">
                 </div>
-                <div>
+                <div id="selectContainer" style="flex: 100px; margin: 5px">
+            	<label for="deptId">所属:</label>
+                <select id="deptId"  th:field="*{deptId}">
+                <option value="all">ALL DEPARTMENT</option>
+                <option value="D01">D01</option>
+                <option value="D02">D02</option>
+                </select>
+            	</div>
+            </div>
+                <div id="inputContainerdate">
                     <label for="entryDate">入社年月日:</label>
                     <input type="date" id="entryDateFrom" >
                     <span>~</span>
                     <input type="date" id="entryDateTo" >
                 </div>
-            </div> 
-            <div id="selectContainer">
-            	<label for="deptId">所属:</label>
-                <select id="deptId" >
-                <option value="">D01</option>
-                <option value="">D02</option>
-                </select>
-            </div>
+         
+            
             <div id="buttonContainerSearch">
             	<button id="searchButton" onclick="submitForm('listForm','/search','post')">検索</button>
             </div>
-        </div>
     </div>
     <div id="buttonContainer">
         <button id="addButton" onclick="submitForm('listForm','/employee/form')">追加</button>

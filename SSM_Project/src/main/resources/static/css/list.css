@@ -25,30 +25,22 @@ form{
     margin-bottom: 10px;
 }
 
-#inputContainer {
-    display: flex;
-    justify-content: space-between;
-}
 
 
-#inputContainer div {
-    display: flex;
-    flex-direction: column;
-}
 
-#inputContainer label {
+#inputContainerid label {
     margin: 0 ;
-    font-size: 20px;
+    font-size: 18px;
     
 }
 
-#inputContainer input {
+#inputContainerid input {
     margin: 0 10px;
-    padding: 10px;
+    padding: 1px;
     border: 2px solid #444; /* Darker border */
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    width: 100%; /* Adjust as needed */
+    width: 70%; /* Adjust as needed */
     transition: all 0.3s ease;
 
     /* Change these for different font styles */
@@ -62,7 +54,40 @@ form{
     background-color: #444; /* Dark input background */
 }
 
-#inputContainer input:focus {
+#inputContainerid input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+
+
+#inputContainerdate label {
+    margin: 0 ;
+    font-size: 18px;
+    
+}
+
+#inputContainerdate input {
+    margin: 0 10px 10px;
+    padding: 1px;
+    border: 2px solid #444; /* Darker border */
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+
+    /* Change these for different font styles */
+    font-size: 16px;
+    color: #f5f5f5; /* Light text */
+    background-color: #444; /* Dark input background */
+
+    /* Change these for different font styles */
+    font-size: 16px;
+    color: #f5f5f5; /* Light text */
+    background-color: #444; /* Dark input background */
+}
+
+#inputContainerdate input:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
@@ -71,16 +96,15 @@ form{
 
 #selectContainer {
     margin-left: 300px; /* Adjust as necessary */
-    width: 30%;
+    width: 100%;
 }
 
 #selectContainer select {
     padding: 10px;
-    width: 500%;
     border: 2px solid #444; /* Darker border */
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    font-size: 16px;
+    font-size: 13px;
     color: #f5f5f5; /* Light text */
     background-color: #444; /* Dark input background */
     transition: all 0.3s ease;
@@ -94,8 +118,8 @@ form{
 #buttonContainerSearch {
     display: flex;
     justify-content: flex-end;
-    margin-left: 580px;
-    width: 100%;
+    margin-left: 640px;
+    width: 50%;
 }
 
 #buttonContainerSearch button {
