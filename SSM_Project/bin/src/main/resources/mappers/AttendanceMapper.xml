@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.framework.team3.mapper.AttendanceMapper">
+
+
+	<select id="getAll" resultType="com.ssm.framework.team3.bean.Attendance">
+		SELECT A.*,R.*,T.*,C.* FROM T_ATTENDANCE A 
+		LEFT JOIN
+        M_CALENDAR C ON A.ATTENDANCE_DATE=C.CALENDAR_DATE
+		LEFT  JOIN
+		M_REQUEST R on A.STATUS_ID = R.STATUS_ID
+        LEFT  JOIN
+		(select left(ATTENDANCE_DATE,7) as workDay, sum(WORKING_HOURS) as sumWork,sum(OVERTIME_HOURS) as sumOver 
+		from T_ATTENDANCE  WHERE left(ATTENDANCE_DATE,7)=#{date} and EMPLOYEE_ID=#{id}
+		group by workDay) T on left(ATTENDANCE_DATE,7)=T.workDay
+		where left(ATTENDANCE_DATE,7)=#{date} and EMPLOYEE_ID=#{id};
+	</select>
+	
+	<update id="updateReq" parameterType="List">
+		update T_ATTENDANCE set STATUS_ID=2 where right(ATTENDANCE_DATE,2) in
+		<foreach collection="list" item="date" open="(" close=")" separator=",">
+		#{date}
+		</foreach>
+	</update>
+</mapper>

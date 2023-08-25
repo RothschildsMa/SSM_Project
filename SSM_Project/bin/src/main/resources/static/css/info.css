@@ -1,0 +1,51 @@
+body {
+		width: 50%;
+		margin: 0 auto;
+	}
+	.top {
+		/* border: solid black 1px; */
+		margin-top:20px;
+		float: left;
+		width: 100%;
+		position: relative;
+	}
+	.condition {
+		/* border: solid red 1px; */
+		float: left;
+		width: 40%;
+	}
+	.control {
+		/* border: solid green 1px; */
+		float: left;
+		width: 50%;
+		margin-left: 73%;
+		position: absolute; 
+		bottom: 10px;
+	}
+	.btn {
+		width: 80px;
+		line-height: 28px;
+		text-align: center;
+		border-radius: 4px;
+		margin:0 12px;
+		position: relative;
+		overflow: hidden;
+	}
+	table {
+	    border-collapse: collapse;
+	    border-spacing: 0;    
+    	width:100%;
+	}
+ 	thead{
+	 	background-color: #e0e0e0;
+	    color: #000;
+	    vertical-align: bottom;
+ 	}
+	td,th {
+	   text-align: center;
+	}
+	button {
+	position: relative;
+	top:10px;
+	left: 800px;
+	}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Author Chin -->
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勤怠情報一覧(月別）</title>
+<link rel="stylesheet" type="text/css" href="css/attendance_month.css">
+</head>
+
+<body>
+	<header>
+		<h1>勤怠情報一覧(月別）</h1>
+		<button id="logoutButton">ログアウト</button>
+	</header>
+	<main>
+		<section class="employee-info">
+			<div>
+				<label for="employeeId">社員ID:</label> <input type="text"
+					id="employeeId" name="employeeId" maxlength="10" required>
+			</div>
+			<div>
+				<label for="employeeName">氏名:</label> <input type="text"
+					id="employeeName" name="employeeName" maxlength="100" required>
+			</div>
+			<div>
+				<label for="department">所属部門:</label> <input type="text"
+					id="department" name="department" maxlength="10" required>
+			</div>
+		</section>
+		<section class="year-select">
+			<label for="year">年度:</label> <select id="year" name="year">
+				<option value="2020">2020年</option>
+				<option value="2021">2021年</option>
+				<option value="2022">2022年</option>
+				<option value="2023">2023年</option>
+				<option value="2024">2024年</option>
+
+			</select>
+		</section>
+		<section class="month-list">
+			<table>
+				<thead>
+					<tr>
+						<th>月</th>
+						<th>営業日数</th>
+						<th>出勤日数</th>
+						<th>欠勤日数</th>
+						<th>実働時間</th>
+						<th>残業時間</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="amData : ${attendanceList}" th:object="${amData}">
+						<td><a th:href="@{/Amd}" th:text="*{yMonth}"> </a></td>
+						<td th:text="*{workingDays}"></td>
+						<td th:text="*{attendanceDays}"></td>
+						<td th:text="*{absenceHours}"></td>
+						<td th:text="*{workingHours}"></td>
+						<td th:text="*{overtimeHours}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+</body>
+
+</html>

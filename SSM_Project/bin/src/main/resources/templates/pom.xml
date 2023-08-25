@@ -7,27 +7,24 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.2</version>
-
-
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
 	<groupId>com.ssm</groupId>
-	<artifactId>SSM_Project</artifactId>
+	<artifactId>Spring0808</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SSM_Project</name>
-	<description>ssm project</description>
+	<name>Spring0808</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -70,7 +67,7 @@
 			<version>3.0.2</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
