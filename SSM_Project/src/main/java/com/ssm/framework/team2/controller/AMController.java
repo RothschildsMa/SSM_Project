@@ -37,33 +37,6 @@ public class AMController {
 //		attendanceList.add(new AmData());
 //
 //		return attendanceList;
-	@GetMapping("/refresh")
-	public String test(AddForm addForm) {
-
-		return "refresh";
-	}
-
-	@PostMapping("/insert")
-	public String test2(AddForm addForm) {
-
 	
-		addForm.setEmployeeId("E1000");	  
-
-		amService.insert(addForm);
-
-
-		return "redirect:/search1";
-		}
-		
-		
-//		@PostMapping("/update")
-//		public String test3(AddForm addForm) {
-//		
-//				  
-//			amService.update(addForm);
-//
-//			return "redirect:/attendance_day";
-//	}
-
 
 }
