@@ -16,7 +16,8 @@
                 <div id="selectContainer" style="flex: 100px; margin: 5px">
             	<label for="deptId">所属:</label>
                 <select id="deptId"  th:field="*{deptId}">
-                <option th:value="0" > </option>
+                <option value="0" >ALL DEPAETMENT </option>
+                <option th:value="D00">D00</option>
                 <option th:value="D01">D01</option>
                 <option th:value="D02">D02</option>
                 </select>
@@ -29,7 +30,6 @@
                     <input type="date" id="entryDateTo" >
                 </div>
          　
-            
             <div id="buttonContainerSearch">
             	<button id="searchButton" onclick="submitForm('listForm','/search','post')">検索</button>
             </div>
