@@ -13,7 +13,7 @@
 <body>
 	<header>
 		<h1>勤怠情報一覧(月別）</h1>
-		<button id="logoutButton">ログアウト</button>
+		<a href="/login"><button id="logoutButton">ログアウト</button></a>
 	</header>
 	<main>
 		<section class="employee-info">
@@ -31,13 +31,10 @@
 			</div>
 		</section>
 		<section class="year-select">
-			<label for="year">年度:</label> <select id="year" name="year">
-				<option value="2020">2020年</option>
-				<option value="2021">2021年</option>
-				<option value="2022">2022年</option>
-				<option value="2023">2023年</option>
-				<option value="2024">2024年</option>
-
+			<label for="year">年度:</label> <select name="selectedYear"
+				onchange="setActionAndSubmitForm('attMForm', '/month/', this.value)">
+				<option th:each="year : ${yearList}" th:value="${year}"
+					th:text="${year}" th:selected="${year == outputYear}"></option>
 			</select>
 		</section>
 		<section class="month-list">
@@ -53,13 +50,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="amData : ${attendanceList}" th:object="${amData}">
-						<td><a th:href="@{/Amd}" th:text="*{yMonth}"> </a></td>
-						<td th:text="*{workingDays}"></td>
-						<td th:text="*{attendanceDays}"></td>
-						<td th:text="*{absenceHours}"></td>
-						<td th:text="*{workingHours}"></td>
-						<td th:text="*{overtimeHours}"></td>
+					<tr th:each="amData : ${attendanceMonths}" th:object="${amData}">
+						<td><a th:href="@{/Attenddance_day}" th:text="*{attMonth}">
+						</a></td>
+						<td th:text="${amData.dayCount}"></td>
+						<td th:text="${amData.workdayCount}"></td>
+						<td th:text="${amData.absencedayCount}"></td>
+						<td th:text="${amData.workingHours}"></td>
+						<td th:text="${amData.overtimeHours}"></td>
 					</tr>
 				</tbody>
 			</table>

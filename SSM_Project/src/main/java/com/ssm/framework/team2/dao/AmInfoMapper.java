@@ -12,11 +12,9 @@ import com.ssm.framework.team2.form.AddForm;
 @Mapper
 public interface AmInfoMapper {
 
-	List<AmData> findWorkingDays();
+	List<AmData> findWorkingDays(String selectedYear);
 
-	List<AmData> findAttendanceDays();
-
-	List<AmData> findAmInfo();
+	List<AmData> findAmInfo(String selectedYear);
 
 	void add(AddForm form);
 

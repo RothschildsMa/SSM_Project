@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.framework.team2.dao.YmMapper">
+
+	<select id="findYear" resultType="java.lang.String">
+		SELECT DISTINCT
+		LEFT(ATTENDANCE_YM,4) FROM
+		M_ATTENDANCE_YM WHERE DEL_FLG=0;
+	</select>
+
+	<select id="findYM"
+		resultType="com.ssm.framework.team2.entity.YmData">
+		SELECT
+		LEFT(ATTENDANCE_YM,4) AS
+		ATTENDANCE_YEAR,
+		RIGHT(ATTENDANCE_YM,2) AS ATTENDANCE_MONTH
+		FROM
+		M_ATTENDANCE_YM WHERE
+		DEL_FLG=0;
+	</select>
+
+
+
+</mapper>
