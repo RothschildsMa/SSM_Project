@@ -7,57 +7,52 @@
 
 <mapper namespace="com.ssm.framework.team2.dao.AmInfoMapper">
 
+	<select id="findByYear"
+		resultType="com.ssm.framework.team2.entity.AmData">
+		SELECT
+		LEFT(ATTENDANCE_YM,4)
+		AS ATTENDANCE_YEAR,
+		RIGHT(ATTENDANCE_YM,2) AS ATTENDANCE_MONTH
+		FROM
+		M_ATTENDANCE_YM WHERE
+		DEL_FLG=0;
+	</select>
+
+
 	<select id="findWorkingDays"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(CALENDAR_DATE,7) AS Y_MONTH,
-		COUNT(LEFT(CALENDAR_DATE,7)) AS WORKING_DAYS
+		SELECT LEFT(CALENDAR_DATE,7) AS ATT_MONTH,
+		COUNT(LEFT(CALENDAR_DATE,7)) AS DAY_COUNT
 		FROM
 		M_CALENDAR
 		WHERE
-		DEL_FLG = 0 AND
+		DEL_FLG =
+		0 AND
 		HOLIDAY_FLG = 0
 		GROUP BY LEFT(CALENDAR_DATE,7)
 	</select>
 
-	<select id="findAttendanceDays"
+
+	<select id="findAmInfo"
 		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(ATTENDANCE_DATE,7) AS A_days,
-		COUNT(LEFT(ATTENDANCE_DATE,7)) AS
-		ATTENDANCE_DAYS
-		FROM
-		T_ATTENDANCE
-
-		WHERE
-		DEL_FLG = 0 AND
-
-		WORKING_HOURS != 0
-		GROUP BY
-		LEFT(ATTENDANCE_DATE,7)
-	</select>
-
-	<select id="findAInfo"
-		resultType="com.ssm.framework.team2.entity.AmData">
-		SELECT LEFT(ATTENDANCE_DATE,7) AS A_INFO,
-		SUM(ABSENCE_HOURS)
-		AS ABSENCE_HOURS,
-		SUM(WORKING_HOURS) AS
-		WORKING_HOURS,
-		SUM(OVERTIME_HOURS) AS OVERTIME_HOURS
-		FROM T_ATTENDANCE
-		JOIN M_CALENDAR
-		ON LEFT(T_ATTENDANCE.ATTENDANCE_DATE,7) =
-		LEFT(M_CALENDAR.CALENDAR_DATE, 7)
-		WHERE T_ATTENDANCE.del_flg = 0
-		<if test="absentHours != null and absentHours !=''">
-			and ABSENCE_HOURS = #{absentHours}
-		</if>
-		<if test="workingHours != null and workingHours != ''">
-			and WORKING_HOURS = #{workingHours}
-		</if>
-		<if test="overtimeHours != null and overtimeHours !=''">
-			and OVERTIME_HOURS = #{overtimeHours}
-		</if>
-		GROUP BY LEFT(M_CALENDAR.CALENDAR_DATE, 6)
+		SELECT LEFT(t1.CALENDAR_DATE,7) AS ATT_MONTH,
+		COUNT(LEFT(t1.CALENDAR_DATE,7)) AS DAY_COUNT,
+		COUNT(t2.STATUS_ID !=
+		'004') AS WORKDAY_COUNT,
+		COUNT(t2.STATUS_ID = '004') AS
+		ABSENCEDAY_COUNT,
+		SUM(t2.ABSENCE_HOURS) AS ABSENCE_HOURS,
+		SUM(t2.WORKING_HOURS) AS WORKING_HOURS,
+		SUM(t2.OVERTIME_HOURS) AS
+		OVERTIME_HOURS
+		FROM M_CALENDAR t1
+		LEFT JOIN T_ATTENDANCE t2 ON
+		t1.CALENDAR_DATE = t2.ATTENDANCE_DATE
+		WHERE t1.DEL_FLG = 0 AND
+		t1.HOLIDAY_FLG = 0
+		AND EXTRACT(YEAR FROM t1.CALENDAR_DATE) =
+		#{selectedYear}
+		GROUP BY LEFT(t1.CALENDAR_DATE,7);
 	</select>
 
 
@@ -77,27 +72,6 @@
 		#{overtimeHours}, #{absenceHours},
 		#{statusId}, #{remarks})
 	</insert>
-	
-	<update id="update">
-		UPDATE T_ATTENDANCE SET
-		START_TIME = #{startTime},
-		END_TIME = #{endTime},
-		REST_HOURS = #{restHours},
-		WORKING_HOURS = #{workingHours},
-		OVERTIME_HOURS = #{overtimeHours},
-		ABSENCE_HOURS = #{absenceHours},
-		STATUS_ID = #{statusId},
-		REMARKS = #{remarks},
-		update_date = CURRENT_TIMESTAMP
-		WHERE EMPLOYEE_ID=#{employeeId} AND DEL_FLG=0
-		AND ATTENDANCE_DATE = #{attendanceDate}
-	</update>
-	
-	<update id="logicalDelete">
-		UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE EMPLOYEE_ID=#{employeeId} AND ATTENDANCE_DATE = #{attendanceDate}
-	</update>
-	
-	
 </mapper>
 
         

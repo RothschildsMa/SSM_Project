@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>勤怠承認詳細</title>
+<script src="/js/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+	body {
+		width: 80%;
+		margin: 0 auto;
+	}
+	.top {
+		/* border: solid black 1px; */
+		margin-top:20px;
+		float: left;
+		width: 100%;
+		position: relative;
+	}
+	.condition {
+		/* border: solid red 1px; */
+		float: left;
+		width: 40%;
+	}
+	.control {
+		/* border: solid green 1px; */
+		float: left;
+		width: 50%;
+		margin-left: 73%;
+		position: absolute; 
+		bottom: 10px;
+	}
+	.btn {
+		width: 80px;
+		line-height: 28px;
+		text-align: center;
+		border-radius: 4px;
+		margin:0 12px;
+		position: relative;
+		overflow: hidden;
+	}
+	table {
+	    border-collapse: collapse;
+	    border-spacing: 0;    
+    	width:100%;
+	}
+ 	thead{
+	 	background-color: #e0e0e0;
+	    color: #000;
+	    vertical-align: bottom;
+ 	}
+	td,th {
+	   text-align: center;
+	}
+	.num{
+		text-align:right;
+	}
+	.text{
+		text-align:left;
+	}
+</style>
+</head>
+<body>
+	<div class="top">
+		<div class="condition">
+			<p>社員ID：E0001</p>
+			<p>勤怠年月：2023-08</p>
+		</div>
+		
+		<div class="control">
+			<button class="btn btn1" onclick="update()">承認</button>
+			<button class="btn btn2" onclick="updateAll()">一括承認</button>
+			<button class="btn btn3">閉じる</button>
+		</div>
+	</div>
+	
+
+	<div  class="info">
+		<table class="tb1" border="1">
+			<thead>
+				<tr>
+					<th>選択</th>
+					<th>日付</th>
+					<th>曜日</th>
+					<th>出勤時間</th>
+					<th>退勤時間</th>
+					<th>休憩時間</th>
+					<th>実働時間</th>
+					<th>残業時間</th>
+					<th>作業内容</th>
+					<th>勤務状態</th>
+					<th>申請事由</th>
+					<th>申請状態</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item:${Attendances}">
+					<td><input type="checkbox" id="myCheckbox" th:disabled="${item.statusId==2}"/></td>
+					<td name="attendanceDate" th:text="${#strings.substring(item.attendanceDate,8,10)}"></td>
+					<td th:text="${item.weekDay}"></td>
+					<td class="num" th:text="${item.startTime}"></td>
+					<td class="num" th:text="${item.endTime}"></td>
+					<td class="num" th:text="${item.restHours}"></td>
+					<td class="num" th:text="${item.workingHours}"></td>
+					<td class="num" th:text="${item.overTimeHours}"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="text" th:text="${item.statusName}"></td>
+					<td class="text" th:text="${item.remarks}"></td>
+				</tr>
+				
+			</tbody>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th>合计</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th class="num" th:text="${Attendances[0].sumWork}"></th>
+					<th class="num" th:text="${Attendances[0].sumOver}"></th>
+				</tr>
+			</tfoot>
+			
+		</table>
+
+	</div>
+	<script>
+	function update(){
+		var Check = $("table input[type=checkbox]:checked");
+		console.log(Check.length)
+		if(Check.length==0){
+			alert("勤怠実績を選択してください")
+		}else{
+			var dates=new Array();
+			Check.each(function () {//遍历
+	            var row = $(this).parent("td").parent("tr");//获取选中行
+	            var id = row.find("[name='attendanceDate']").html();//获取值
+	            dates.push(id);
+	        })
+	        $.ajax({
+	        	url:'/attendance/update',
+                type:'POST',
+                data:{"dates":dates},
+                success:function (res) {
+                	alert(res)
+                	location.reload();
+                	}
+            	})
+	        console.log(dates)
+		}
+		
+    }
+	function updateAll(){
+		var dates=new Array();
+		$("table tbody tr").each(function() {
+			  var value = $(this).find("[name='attendanceDate']").html();
+			  dates.push(value);
+			});
+		$.ajax({
+        	url:'/attendance/update',
+            type:'POST',
+            data:{"dates":dates},
+            success:function (res) {
+            	alert(res)
+            	location.reload();
+            	}
+        	})
+		console.log(dates);
+    }
+	</script>
+</body>
+</html>
