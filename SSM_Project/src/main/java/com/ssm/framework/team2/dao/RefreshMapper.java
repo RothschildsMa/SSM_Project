@@ -1,0 +1,11 @@
+package com.ssm.framework.team2.dao;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ssm.framework.team2.form.AddForm;
+
+@Mapper
+public interface RefreshMapper {
+	void add(AddForm form);
+
+}

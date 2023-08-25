@@ -10,13 +10,17 @@ import lombok.Data;
 @Data
 public class AmData implements Serializable {
 
-	private String month;
-	private String yMonth;
-	private String aDays;
-	private String aInfo;
-	private String workingDays;
-	private String attendanceDays;
-	private String absenceHours;
-	private String workingHours;
-	private String overtimeHours;
+//	private String month;
+
+//	private String attendanceMonth;
+//	private String attendanceYear;
+	private String attYear;
+	private String attMonth;
+	private Integer dayCount;
+	private Integer workdayCount;
+	private Integer absencedayCount;
+	private double absenceHours;
+	private double workingHours;
+	private double overtimeHours;
+
 }

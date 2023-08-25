@@ -5,19 +5,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ssm.framework.team2.entity.AmData;
-import com.ssm.framework.team2.form.AddForm;
+
 
 //Author Chin
 
 @Mapper
 public interface AmInfoMapper {
 
-	List<AmData> findWorkingDays();
+	List<AmData> findWorkingDays(String selectedYear);
 
-	List<AmData> findAttendanceDays();
+	List<AmData> findAmInfo(String selectedYear);
 
-	List<AmData> findAmInfo();
-
-	void add(AddForm form);
+	
 
 }

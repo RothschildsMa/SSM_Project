@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Author Chin -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssm.framework.team2.dao.AmInfoMapper">
+
+	<select id="findWorkingDays"
+		resultType="com.ssm.framework.team2.entity.AmData">
+		SELECT LEFT(CALENDAR_DATE,7) AS Y_MONTH,
+		COUNT(LEFT(CALENDAR_DATE,7)) AS WORKING_DAYS
+		FROM
+		M_CALENDAR
+		WHERE
+		DEL_FLG = 0 AND
+		HOLIDAY_FLG = 0
+		GROUP BY LEFT(CALENDAR_DATE,7)
+	</select>
+
+	<select id="findAttendanceDays"
+		resultType="com.ssm.framework.team2.entity.AmData">
+		SELECT LEFT(ATTENDANCE_DATE,7) AS A_days,
+		COUNT(LEFT(ATTENDANCE_DATE,7)) AS
+		ATTENDANCE_DAYS
+		FROM
+		T_ATTENDANCE
+
+		WHERE
+		DEL_FLG = 0 AND
+
+		WORKING_HOURS != 0
+		GROUP BY
+		LEFT(ATTENDANCE_DATE,7)
+	</select>
+
+	<select id="findAInfo"
+		resultType="com.ssm.framework.team2.entity.AmData">
+		SELECT LEFT(ATTENDANCE_DATE,7) AS A_INFO,
+		SUM(ABSENCE_HOURS)
+		AS ABSENCE_HOURS,
+		SUM(WORKING_HOURS) AS
+		WORKING_HOURS,
+		SUM(OVERTIME_HOURS) AS OVERTIME_HOURS
+		FROM T_ATTENDANCE
+		JOIN M_CALENDAR
+		ON LEFT(T_ATTENDANCE.ATTENDANCE_DATE,7) =
+		LEFT(M_CALENDAR.CALENDAR_DATE, 7)
+		WHERE T_ATTENDANCE.del_flg = 0
+		<if test="absentHours != null and absentHours !=''">
+			and ABSENCE_HOURS = #{absentHours}
+		</if>
+		<if test="workingHours != null and workingHours != ''">
+			and WORKING_HOURS = #{workingHours}
+		</if>
+		<if test="overtimeHours != null and overtimeHours !=''">
+			and OVERTIME_HOURS = #{overtimeHours}
+		</if>
+		GROUP BY LEFT(M_CALENDAR.CALENDAR_DATE, 6)
+	</select>
+
+
+
+	<insert id="add">
+		INSERT INTO T_ATTENDANCE
+		(EMPLOYEE_ID,
+		ATTENDANCE_DATE,
+		START_TIME, END_TIME,
+		REST_HOURS, WORKING_HOURS,
+		OVERTIME_HOURS, ABSENCE_HOURS,
+		STATUS_ID, REMARKS)
+		VALUES
+		(#{employeeId}, #{attendanceDate}, #{startTime},
+		#{endTime},
+		#{restHours}, #{workingHours},
+		#{overtimeHours}, #{absenceHours},
+		#{statusId}, #{remarks})
+	</insert>
+	
+	<update id="update">
+		UPDATE T_ATTENDANCE SET
+		START_TIME = #{startTime},
+		END_TIME = #{endTime},
+		REST_HOURS = #{restHours},
+		WORKING_HOURS = #{workingHours},
+		OVERTIME_HOURS = #{overtimeHours},
+		ABSENCE_HOURS = #{absenceHours},
+		STATUS_ID = #{statusId},
+		REMARKS = #{remarks},
+		update_date = CURRENT_TIMESTAMP
+		WHERE EMPLOYEE_ID=#{employeeId} AND DEL_FLG=0
+		AND ATTENDANCE_DATE = #{attendanceDate}
+	</update>
+	
+	<update id="logicalDelete">
+		UPDATE T_ATTENDANCE SET DEL_FLG=1 WHERE EMPLOYEE_ID=#{employeeId} AND ATTENDANCE_DATE = #{attendanceDate}
+	</update>
+	
+	
+</mapper>
+
+        
+        
+        

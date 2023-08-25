@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ssm.framework.team2.form.AddForm;
 import com.ssm.framework.team2.service.AmService;
+import com.ssm.framework.team2.service.RefreshService;
 
 @Controller
 public class RefreshController {
 
 	@Autowired
-	private AmService amService;
+	private RefreshService refreshService;
 
 	@GetMapping("/refresh")
 	public String test(AddForm addForm) {
@@ -25,7 +26,7 @@ public class RefreshController {
 
 		addForm.setEmployeeId("E1000");
 
-		amService.insert(addForm);
+		refreshService.insert(addForm);
 
 		return "redirect:/attendance_day";
 	}
@@ -34,7 +35,7 @@ public class RefreshController {
 		public String test3(AddForm addForm) {
 		
 				  
-			amService.update(addForm);
+			refreshService.update(addForm);
 
 			return "redirect:/attendance_day";
 }

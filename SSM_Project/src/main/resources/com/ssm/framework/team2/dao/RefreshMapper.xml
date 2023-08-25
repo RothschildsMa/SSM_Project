@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssm.framework.team2.dao.RefreshMapper">
+
+<insert id="add">
+		INSERT INTO T_ATTENDANCE
+		(EMPLOYEE_ID,
+		ATTENDANCE_DATE,
+		START_TIME, END_TIME,
+		REST_HOURS, WORKING_HOURS,
+		OVERTIME_HOURS, ABSENCE_HOURS,
+		STATUS_ID, REMARKS)
+		VALUES
+		(#{employeeId}, #{attendanceDate}, #{startTime},
+		#{endTime},
+		#{restHours}, #{workingHours},
+		#{overtimeHours}, #{absenceHours},
+		#{statusId}, #{remarks})
+	</insert>
+</mapper>

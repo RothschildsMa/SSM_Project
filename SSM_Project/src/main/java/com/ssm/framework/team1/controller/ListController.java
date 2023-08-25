@@ -29,13 +29,14 @@ public class ListController {
 	}
 	
 	@PostMapping("/search")
-	public String search(SearchForm searchForm,Model model) {
+	public String search1(SearchForm searchForm,Model model) {
 		
 		List<Employee> employeeList = listService.searchEmployee(searchForm);
 		model.addAttribute("employeeList", employeeList);
 		
 		return "list";
 	}
+	
 	
 	@DeleteMapping("/delete")
 	   public String deleteEmployee(@PathVariable("employeeId") String employeeId, Model model) {
