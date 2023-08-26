@@ -30,9 +30,10 @@ body {
         }
        
         .form-row {
-           
+           	display: flex;
             align-items: center;
             margin: 5px 0;
+        
         }
         .form-buttons {
             text-align: right;
@@ -47,6 +48,8 @@ body {
             cursor: pointer;
             margin-right: 5px;
         }
+     
+        
 
  
 
