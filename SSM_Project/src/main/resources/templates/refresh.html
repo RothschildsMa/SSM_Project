@@ -6,8 +6,9 @@
 <script src="/submitForm.js"></script>
 </head>
 <body>
-	<h1>勤怠情報登録更新</h1>
+	<h1></h1>
 	<form th:action="@{/insert}" th:object="${addForm}" method="post">
+
 		<div class="form-row">
 			<table>
 				<tr>
@@ -26,22 +27,32 @@
 		</div>
 		<div class="form-row">
 			<div>
-				<label>日付</label> <input type="date" th:field="*{attendanceDate}">
+				<label>日付:</label> <input type="date" th:field="*{attendanceDate}">
 			</div>
+		</div>
+		<div class="form-row">
 			<div>
-				<label>作業開始時間</label> <input type="time" th:field="*{startTime}">
+				<label>作業開始時間:</label> <input type="time" th:field="*{startTime}">
 			</div>
+		</div>
+		<div class="form-row">
 			<div>
-				<label>作業終了時間</label> <input type="time" th:field="*{endTime}">
+				<label>作業終了時間:</label> <input type="time" th:field="*{endTime}">
 			</div>
+		</div>
+		<div class="form-row">
 			<div>
-				<label>休憩時間</label> <input type="text" th:field="*{restHours}">
+				<label>休憩時間:</label> <input type="text" th:field="*{restHours}">
 			</div>
+		</div>
+		<div class="form-row">
 			<div>
-				<label>残業時間</label> <input type="text" th:field="*{overtimeHours}">
+				<label>残業時間:</label> <input type="text" th:field="*{overtimeHours}">
 			</div>
+		</div>
+		<div class="form-row">
 			<div>
-				<label>状態</label> <select name="statusId" th:field="*{statusId}">
+				<label>状態:</label> <select name="statusId" th:field="*{statusId}">
 					<option value="0">出勤</option>
 					<option value="1">遅刻</option>
 					<option value="2">早退</option>
@@ -49,20 +60,26 @@
 					<option value="4">その他</option>
 				</select>
 			</div>
-			
+		</div>
+		<div class="form-row">
 			<div>
-				<label>申請事由</label>
-				<textarea rows="5" th:field="*{remarks}"></textarea>
-			</div>
-			<div>
-				<label>作業内容</label>
-				<textarea rows="5" th:field="*{remarks}"></textarea>
-			</div>
-			<div>
-				<label>備考</label>
+				<label>申請事由:</label>
 				<textarea rows="5" th:field="*{remarks}"></textarea>
 			</div>
 		</div>
+		<div class="form-row">
+			<div>
+				<label>作業内容:</label>
+				<textarea rows="5" th:field="*{remarks}"></textarea>
+			</div>
+		</div>
+		<div class="form-row">
+			<div>
+				<label>備考:</label>
+				<textarea rows="5" th:field="*{remarks}"></textarea>
+			</div>
+		</div>
+		
 		<div class="button-group">
 			<button type="submit" class="button"
 				onclick="submitForm('updateForm','update2','post')">更新</button>
@@ -70,6 +87,20 @@
 				onclick="submitForm('updateForm','add2','post')">登録</button>
 			<button class="button">戻る</button>
 		</div>
+	<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dateInput = document.querySelector("input[type='date']");
+        const form = document.querySelector("form");
+        
+        form.addEventListener("submit", function(event) {
+            if (dateInput.value === "") {
+                event.preventDefault();
+                alert("日付は必須項目です。");
+            }
+        });
+    });
+</script>
+		
 	</form>
 </body>
 </html>
