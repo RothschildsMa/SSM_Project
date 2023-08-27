@@ -32,17 +32,6 @@ public class AMController {
 		return "attendance_month";
 	}
 
-
-//	private List<AmData> getAmInfo() {
-//
-//		List<AmData> attendanceList = new ArrayList<>();
-//		attendanceList.add(new AmData());
-//		attendanceList.add(new AmData());
-//
-//		return attendanceList;
-	
-
-
 	@GetMapping("/month/{selectedYear}")
 	public String handleSubmit(@PathVariable String selectedYear, Model model) {
 		List<String> yearList = amService.getYear();

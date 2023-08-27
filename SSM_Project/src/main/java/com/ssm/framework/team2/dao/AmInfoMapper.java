@@ -16,6 +16,5 @@ public interface AmInfoMapper {
 
 	List<AmData> findAmInfo(String selectedYear);
 
-	
 
 }
