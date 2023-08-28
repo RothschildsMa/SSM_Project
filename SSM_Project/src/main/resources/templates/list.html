@@ -16,6 +16,7 @@
                 <div id="selectContainer" style="flex: 100px; margin: 5px">
             	<label for="deptId">所属:</label>
                 <select id="deptId"  th:field="*{deptId}">
+                <option value=""> -------</option>
                 <option value="0" >ALL DEPAETMENT </option>
                 <option th:value="D00">D00</option>
                 <option th:value="D01">D01</option>
@@ -25,9 +26,9 @@
             </div>
                 <div id="inputContainerdate">
                     <label for="entryDate">入社年月日:</label>
-                    <input type="date" id="entryDateFrom" >
+                    <input type="date" id="dateFrom" >
                     <span>~</span>
-                    <input type="date" id="entryDateTo" >
+                    <input type="date" id="dateTo" >
                 </div>
          　
             <div id="buttonContainerSearch">

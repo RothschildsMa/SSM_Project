@@ -20,6 +20,11 @@
 			<if test="deptId !=null and deptId !=''">
 				AND DEPT_ID = #{deptId}
 			</if>
+			<if test="fromDate !=null and fromDate !=''">
+				<if test="toDate !=null and toDate !=''">
+					AND ENTRY_DATE BETWEEN #{fromDate} AND #{toDate}
+				</if>
+			</if>
 			
 		</where>
 	</select>
