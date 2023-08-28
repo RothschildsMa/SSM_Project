@@ -9,7 +9,7 @@
 	height:100px;
 }
 .tablebox{
-	width:67%;
+	width:80%;
 }
 .tablebox th{
 	text-align:left;
@@ -25,7 +25,7 @@
 	height:25px;
 }
 .input-long{
-	width:70%;
+	width:50%;
 }
 .input-tel,.select-dep{
 	width:120px;
@@ -55,5 +55,18 @@
     color:black;
     border-radius:4px;
     margin: 0 auto 10px;
-
+}
+.error-inline {
+    color: red;
+    margin-left: 10px;
+    white-space: nowrap;
+    font-size: 14px; 
+    display: inline-block;
+}
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+.asterisk{
+	color: red;
 }

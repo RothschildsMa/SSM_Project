@@ -1,84 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<style type="text/css">
-.mes,.bot{
-	width:1000px;
-	padding:15px;
-}
-.mes{
-	height:450px;
-}
-.bot{
-	height:100px;
-}
-.tablebox{
-	width:80%;
-}
-.tablebox th{
-	text-align:left;
-	vertical-align:middle;
-    padding-left:30px;
-}
-.tablebox td{
-	height:50px; 
-	line-height:50px; 
-	vertical-align:middle;
-}
-.input-long,.input-tel,.input-age,.select-dep,.select-year,.select-md{
-	height:25px;
-}
-.input-long{
-	width:50%;
-}
-.input-tel,.select-dep{
-	width:120px;
-}
-.input-age,.select-year{
-	width:60px;
-}
-.select-md{
-	width:40px;
-}
-.bu-create,.bu-close{
-	float:right; 
-	width:200px;
-	height:50px; 
-	padding:25px 50px 25px 25px;
-}
-.bu-close{
-	display:clock;
-}
-.button{
-	background-color:gray;
-	width:120px;
-    height:50px;
-    line-height:44px;
-    text-align:center;
-    font-size:20px;
-    color:black;
-    border-radius:4px;
-    margin: 0 auto 10px;
-}
-.error-inline {
-    color: red;
-    margin-left: 10px;
-    white-space: nowrap;
-    font-size: 14px; 
-    display: inline-block;
-}
-.flex-align-center {
-    display: flex;
-    align-items: center;
-}
-.asterisk{
-	color: red;
-}
-</style>
+
 <head>
 	<meta charset="UTF-8">
-    <title th:text="${employeeForm.IsNewEntry} ? '登録画面' : '修正画面'"></title> 
+    <title th:text="${employeeForm.IsNewEntry} ? '登録画面' : '修正画面'"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/employeeForm.css}">
 </head>
-
 
 <body>
 	<form action="/employee/submit" th:object="${employeeForm}" method="post">
@@ -136,8 +63,8 @@
 					<span th:errors="*{ENTRY_DATE}" class="error-inline"></span>
 					</td>
 				</tr>
-			
-			
+				
+
 				<tr>
 					<td><label for="AGE">年齢</label></td>
 					<td class="flex-align-center">
@@ -175,23 +102,11 @@
 			
 		</div>
 
-		<script>
-		    var currentDate = new Date();
-		
-		    // 计算最早可选日期（当前日期的年份 - 54年，月份和日期不变）
-		    var earliestDate = new Date(currentDate.getFullYear() - 54, currentDate.getMonth(), currentDate.getDate() + 1);
-		
-		    // 计算最晚可选日期（当前日期 + 180天）
-		    var latestDate = new Date(currentDate.getTime() + 180 * 24 * 60 * 60 * 1000);
-		
-		    // 获取日期输入框元素
-		    var entryDateInput = document.getElementById('ENTRY_DATE');
-		
-		    // 设置最早和最晚可选日期
-		    entryDateInput.min = earliestDate.toISOString().split('T')[0];
-		    entryDateInput.max = latestDate.toISOString().split('T')[0];
-		</script>
-
 	</form>
+	
+	<script src="/static/js/employeeForm.js" th:src="@{/js/employeeForm.js}">
+	</script>
+
 </body>
+
 </html>
