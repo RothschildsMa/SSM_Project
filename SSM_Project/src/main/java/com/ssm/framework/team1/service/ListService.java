@@ -19,8 +19,14 @@ public class ListService {
 		return mapper.findall();
 	}
 	
-	public List<Employee> searchEmployee(SearchForm searchForm){
-		return mapper.findEmployees(searchForm);
+	
+	public List<Employee> searchEmployee(String deptId,String employeeId){
+		if("0".equals(deptId)) {
+			return getAllEmployee();
+		}
+		else {
+			return mapper.findEmployees(deptId,employeeId);
+		}
 	}
 	
 	public List<Employee> deleteEmployeeById(String employeeId) {

@@ -9,7 +9,6 @@ import com.ssm.framework.team2.dao.AmInfoMapper;
 import com.ssm.framework.team2.dao.YmMapper;
 import com.ssm.framework.team2.entity.AmData;
 import com.ssm.framework.team2.entity.YmData;
-import com.ssm.framework.team2.form.AddForm;
 
 //Author Chin
 
@@ -37,5 +36,4 @@ public class AmService {
 		return ymmapper.findYM();
 	}
 
-	
 }
