@@ -66,41 +66,45 @@
 			<table id="mainTable">
 				<thead>
 					<tr>
-						<th class="EMPLOYEE_ID">社員ID</th>
-						<th class="EMPLOYEE_NAME">氏名</th>
-						<th class="DEPT_ID">部門</th>
-						<th class="WORKING_HOURS">作業時間</th>
-						<th class="REST_HOURS">休憩時間</th>
-						<th class="OVERTIME_HOURS">残業時間</th>
-						<th class="ABSENCE_HOURS">欠勤時間</th>
-						<th class="STATUS_ID">勤務状態</th>
-						<th class="STATUS_NAME">申請状態</th>
+						<th class="col-employeeId">社員ID</th>
+						<th class="col-entryDate">勤怠年月</th>
+						<th class="col-employeeName">氏名</th>
+						<th class="col-deptId">部門</th>
+						<th class="col-workingHours">作業時間</th>
+						<th class="col-restHours">休憩時間</th>
+						<th class="col-overtimeHours">残業時間</th>
+						<th class="col-absenceHours">欠勤時間</th>
+						<th class="col-statusId">勤務状態</th>
+						<th class="col-statusName">申請状態</th>
 					</tr>
 				</thead>
 
 				<tbody>
 
-					<tr th:each="user : ${userList}" th:object="${user}">
-						<td class="EMPLOYEE_ID" th:text="*{EMPLOYEE_ID}"></td>
-						<td class="EMPLOYEE_NAME" th:text="*{EMPLOYEE_NAME}"></td>
-						<td class="DEPT_ID" th:text="*{DEPT_ID}"></td>
-						<td class="WORKING_HOURS" th:text="*{WORKING_HOURS}"></td>
-						<td class="OVERTIME_HOURS" th:text="*{OVERTIME_HOURS}"></td>
-						<td class="ABSENCE_HOURS" th:text="*{ABSENCE_HOURS}"></td>
-						<td class="STATUS_ID" th:text="*{STATUS_ID}"></td>
-						<td class="STATUS_NAME "th:text="*{STATUS_NAME}"></td>
+					<tr th:each="approval : ${approval}" th:object="${approval}">
+						<td class="col-employeeId" th:text="*{employeeId}"></td>
+						<td class="col-entryDate" th:text="*{entryDate}"></td>
+						<td class="col-employeeName" th:text="*{employeeName}"></td>
+						<td class="col-deptId" th:text="*{deptId}"></td>
+						<td class="col-workingHours" th:text="*{workingHours}"></td>
+						<td class="col-restHours" th:text="*{restHours}"></td>
+						<td class="col-overtimeHours" th:text="*{overtimeHours}"></td>
+						<td class="col-absenceHours" th:text="*{absenceHours}"></td>
+						<td class="col-statusId"th:text="*{statusId}"></td>
+						<td class="col-statusName "th:text="*{statusName}"></td>
 					</tr>
 
 					<tr>
-						<td class="EMPLOYEE_ID"></td>
-						<td class="EMPLOYEE_NAME"></td>
-						<td class="DEPT_ID"></td>
-						<td class="WORKING_HOURS"></td>
-						<td class="REST_HOURS"></td>
-						<td class="OVERTIME_HOURS"></td>
-						<td class="ABSENCE_HOURS"></td>
-						<td class="STATUS_ID"></td>
-						<td class="STATUS_NAME"></td>
+						<td class="col-employeeId"></td>
+						<td class="col-entryDate"></td>
+						<td class="col-employeeName"></td>
+						<td class="col-deptId"></td>
+						<td class="col-workingHours"></td>
+						<td class="col-restHours"></td>
+						<td class="col-overtimeHours"></td>
+						<td class="col-absenceHours"></td>
+						<td class="col-statusId"></td>
+						<td class="col-statusName"></td>
 					</tr>
 				</tbody>
 			</table>

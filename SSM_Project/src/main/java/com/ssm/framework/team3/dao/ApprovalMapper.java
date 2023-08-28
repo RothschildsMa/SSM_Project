@@ -10,7 +10,7 @@ import com.ssm.framework.team3.form.Team3SearchForm;
 @Mapper
 public interface ApprovalMapper {
 
-	List<Approval> findT_EMPLOYEE();
+	List<Approval> findall();
 
-	List<Approval> findT_ATTENDANCE(Team3SearchForm team3SearchForm);
+	List<Approval> findApprovals(Team3SearchForm team3SearchForm);
 }

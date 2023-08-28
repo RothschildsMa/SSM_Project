@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="com.ssm.framework.team3.dao.ApprovalMapper" >
-	<select id="findT_EMPLOYEE" resultType="com.ssm.framework.team3.entity.Approval">
+	<select id="findall" resultType="com.ssm.framework.team3.entity.Approval">
 		SELECT * FROM T_EMPLOYEE WHERE del_flg = 0;
 	</select>
 	
-	<select id="findT_ATTENDANCE" resultType="com.ssm.framework.team3.entity.Approval">
+	<select id="findApprovals" resultType="com.ssm.framework.team3.entity.Approval">
 		SELECT * FROM T_ATTENDANCE WHERE del_flg = 0;
 	</select>
 	

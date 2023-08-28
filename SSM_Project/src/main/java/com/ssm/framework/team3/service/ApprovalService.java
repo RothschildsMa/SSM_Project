@@ -15,11 +15,12 @@ public class ApprovalService {
 	@Autowired
 	private ApprovalMapper mapper;
 
-	public List<Approval> getApproval() {
-		return mapper.findT_EMPLOYEE();
+	public List<Approval> getAllApproval() {
+		
+		return mapper.findall();
 	}
 
 	public List<Approval> searchApproval(Team3SearchForm team3SearchForm) {
-		return mapper.findT_ATTENDANCE(team3SearchForm);
+		return mapper.findApprovals(team3SearchForm);
 	}
 }
