@@ -28,10 +28,14 @@ public class ListController {
 		return "list";
 	}
 	
-	@PostMapping("/search")
+
+	@GetMapping("/search")
 	public String search1(SearchForm searchForm,Model model) {
 		
-		List<Employee> employeeList = listService.searchEmployee(searchForm);
+
+		String selectedDeptId = searchForm.getDeptId();
+		String selectedEmployeeId = searchForm.getEmployeeId();
+		List<Employee> employeeList = listService.searchEmployee(selectedDeptId,selectedEmployeeId);
 		model.addAttribute("employeeList", employeeList);
 		
 		return "list";
