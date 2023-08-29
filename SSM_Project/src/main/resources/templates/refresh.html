@@ -17,11 +17,11 @@
 				</tr>
 				<tr>
 					<th>社員名</th>
-					<td>123456</td>
+					<td>更新太郎</td>
 				</tr>
 				<tr>
 					<th>所属部門</th>
-					<td>123456</td>
+					<td>マーケティング部</td>
 				</tr>
 			</table>
 		</div>
@@ -52,8 +52,9 @@
 		</div>
 		<div class="form-row">
 			<div>
-				<label>状態:</label> <select name="statusId" th:field="*{statusId}">
-				    <option value="9">選択してください</option>
+				<label>状態:</label>
+				 <select name="statusId" th:field="*{statusId}">
+					<option value="9">選択してください</option>
 					<option value="0">出勤</option>
 					<option value="1">遅刻</option>
 					<option value="2">早退</option>
@@ -80,37 +81,37 @@
 				<textarea rows="5" th:field="*{remarks}"></textarea>
 			</div>
 		</div>
-		
+
 		<div class="button-group">
-		　　　<button type="submit" class="button"
-				onclick="submitForm('updateForm','update2','post')">更新</button>
+			
 			<button type="submit" class="button"
 				onclick="submitForm('updateForm','add2','post')">登録</button>
 			<button class="button">戻る</button>
 		</div>
-	<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const dateInput = document.querySelector("input[type='date']");
-        const statusSelect = document.querySelector("select[name='statusId']"); // 获取状态选择元素
-        const form = document.querySelector("form");
-        
-        form.addEventListener("submit", function(event) {
-            if (dateInput.value === "") {
-                event.preventDefault();
-                alert("日付は必須項目です。");
-            }
-            if (statusSelect.value === "9") {
-                event.preventDefault();
-                alert("状態は必須項目です。");
-            }
-        });
-    });
-</script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const dateInput = document.querySelector("input[type='date']");
+				const statusSelect = document
+						.querySelector("select[name='statusId']"); 
+				const form = document.querySelector("form");
+
+				form.addEventListener("submit", function(event) {
+					if (dateInput.value === "") {
+						event.preventDefault();
+						alert("日付は必須項目です。");
+					}
+					if (statusSelect.value === "9") {
+						event.preventDefault();
+						alert("状態は必須項目です。");
+					}
+				});
+			});
+		</script>
 
 
 
-</form>
+	</form>
 </body>
 </html>
-       
+
 
