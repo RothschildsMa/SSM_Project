@@ -17,7 +17,7 @@ public class EmployeeForm {
 	@NotEmpty(message = " ※ 氏名を入力してください")
 	private String EMPLOYEE_NAME;
 	private String DEPT_ID;
-	private String GENDER_ID = "G00";
+	private String GENDER_ID = "3";
 	
 	@Pattern(regexp = "^|0[36789]\\d{8,9}$", message = " ※ 正しい電話番号を入力してください") //非必要输入
 	private String TELEPHONE_NUMBER;
