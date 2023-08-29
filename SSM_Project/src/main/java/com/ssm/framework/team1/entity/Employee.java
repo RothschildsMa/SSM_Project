@@ -13,7 +13,9 @@ public class Employee implements Serializable {
 	private String entryDate;
 	private String employeeName;
 	private String genderName;
+	private String genderId;
 	private String age;
+	private String deptId;
 	private String deptName;
 	private String mailAddress;
 }

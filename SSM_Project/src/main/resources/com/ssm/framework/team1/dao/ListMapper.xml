@@ -16,9 +16,13 @@
 
 		 
 	<select id="findEmployees" >
-		SELECT * FROM T_EMPLOYEE 
+		SELECT t1.*, t2.DEPT_NAME as DEPT_NAME, t3.GENDER_NAME as GENDER_NAME
+		FROM T_EMPLOYEE t1 
+		LEFT JOIN M_DEPT t2 ON
+		t1.DEPT_ID = t2.DEPT_ID
+		LEFT JOIN M_GENDER t3 ON t1.GENDER_ID = t3.GENDER_ID
 		<where>
-			DEL_FLG = 0
+			t1.DEL_FLG = 0
 			<if test="employeeId !=null and employeeId !=''">
 				AND EMPLOYEE_ID = #{employeeId}
 			</if>
