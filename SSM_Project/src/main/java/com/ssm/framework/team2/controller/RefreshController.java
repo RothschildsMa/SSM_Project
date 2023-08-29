@@ -38,6 +38,7 @@ public class RefreshController {
 			refreshService.update(addForm);
 
 			return "redirect:/attendance_day";
+			
 }
 
 }
