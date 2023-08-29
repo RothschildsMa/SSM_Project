@@ -6,24 +6,38 @@
         
 <mapper namespace="com.ssm.framework.team1.dao.ListMapper" >
 	<select id="findall" resultType="com.ssm.framework.team1.entity.Employee">
-		SELECT * FROM T_EMPLOYEE WHERE DEL_FLG = 0;
+		SELECT t1.*, t2.DEPT_NAME as DEPT_NAME, t3.GENDER_NAME as GENDER_NAME
+		FROM T_EMPLOYEE t1 
+		LEFT JOIN M_DEPT t2 ON
+		t1.DEPT_ID = t2.DEPT_ID
+		LEFT JOIN M_GENDER t3 ON t1.GENDER_ID = t3.GENDER_ID
+		WHERE t1.DEL_FLG =0;
 	</select>
 
 		 
 	<select id="findEmployees" >
-		SELECT * FROM T_EMPLOYEE 
+		SELECT t1.*, t2.DEPT_NAME as DEPT_NAME, t3.GENDER_NAME as GENDER_NAME
+		FROM T_EMPLOYEE t1 
+		LEFT JOIN M_DEPT t2 ON
+		t1.DEPT_ID = t2.DEPT_ID
+		LEFT JOIN M_GENDER t3 ON t1.GENDER_ID = t3.GENDER_ID
 		<where>
-			DEL_FLG = 0
+			t1.DEL_FLG = 0
 			<if test="employeeId !=null and employeeId !=''">
 				AND EMPLOYEE_ID = #{employeeId}
 			</if>
 			<if test="deptId !=null and deptId !=''">
 				AND DEPT_ID = #{deptId}
 			</if>
+			<if test="fromDate !=null and fromDate !=''">
+				<if test="toDate !=null and toDate !=''">
+					AND ENTRY_DATE BETWEEN #{fromDate} AND #{toDate}
+				</if>
+			</if>
 			
 		</where>
 	</select>
-
+	
 	
 	<select id="deletebyId" resultType="com.ssm.framework.team1.entity.Employee">
 		DELETE * FROM T_EMPLOYEE 

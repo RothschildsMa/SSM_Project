@@ -1,5 +1,8 @@
 package com.ssm.framework.team1.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.ssm.framework.team1.entity.Employee;
 import com.ssm.framework.team1.form.SearchForm;
 import com.ssm.framework.team1.service.ListService;
+
+import ch.qos.logback.classic.pattern.Util;
 
 @Controller
 public class ListController {
@@ -35,7 +40,12 @@ public class ListController {
 
 		String selectedDeptId = searchForm.getDeptId();
 		String selectedEmployeeId = searchForm.getEmployeeId();
-		List<Employee> employeeList = listService.searchEmployee(selectedDeptId,selectedEmployeeId);
+		java.util.Date fromDate = searchForm.getDateFrom();
+		java.util.Date toDate = searchForm.getDateTo();
+		
+		
+		List<Employee> employeeList = listService.searchEmployee(selectedDeptId,selectedEmployeeId,fromDate,toDate);
+		
 		model.addAttribute("employeeList", employeeList);
 		
 		return "list";

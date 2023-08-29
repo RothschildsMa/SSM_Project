@@ -1,5 +1,7 @@
 package com.ssm.framework.team1.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssm.framework.team1.dao.ListMapper;
 import com.ssm.framework.team1.entity.Employee;
-import com.ssm.framework.team1.form.SearchForm;
+
 
 @Service
 public class ListService {
@@ -20,13 +22,15 @@ public class ListService {
 	}
 	
 	
-	public List<Employee> searchEmployee(String deptId,String employeeId){
+	public List<Employee> searchEmployee(String deptId,String employeeId,Date fromDate,Date toDate){
 		if("0".equals(deptId)) {
 			return getAllEmployee();
 		}
+	
 		else {
-			return mapper.findEmployees(deptId,employeeId);
+			return mapper.findEmployees(deptId,employeeId,fromDate,toDate);
 		}
+		
 	}
 	
 	public List<Employee> deleteEmployeeById(String employeeId) {

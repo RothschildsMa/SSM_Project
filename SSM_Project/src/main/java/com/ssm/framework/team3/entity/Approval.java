@@ -8,12 +8,15 @@ import lombok.Data;
 @Data
 public class Approval implements Serializable {
 	private String employeeId;
-	private String attendanceym;
-	private String employeename;
-	private String deptid;
-	private String workinghours;
-	private String resthours;
-	private String overtimehours;
-	private String absencehours;
-	private String statusid;
+	private String entryDate;
+	private String entryDateFrom;
+	private String entryDateTo;
+	private String employeeName;
+	private String deptId;
+	private String workingHours;
+	private String restHours;
+	private String overtimeHours;
+	private String absenceHours;
+	private String statusId;
+	private String statusName;
 }

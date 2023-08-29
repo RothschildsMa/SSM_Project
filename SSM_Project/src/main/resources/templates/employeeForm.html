@@ -32,9 +32,10 @@
 		            <td><label for="DEPT_ID">所属</label></td>
 					<td>
 						<select class="select-dep" id="DEPT_ID" th:field="*{DEPT_ID}">
-							<option value="D00">D00</option>
-							<option value="D01">D01</option>
-							<option value="D02">D02</option>
+							<option value="D00">開発部</option>
+							<option value="D01">総務部</option>
+							<option value="D02">品質保証部</option>
+							<option value="D03">営業部</option>
 						</select>
 					</td>
 				</tr>
@@ -42,9 +43,9 @@
 				<tr>
 					<td><label for="GENDER_ID">性別</label></td>
 					<td class="gender">
-						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="G01">男性 
-						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="G02">女性 
-						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="G00" checked>未確認 
+						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="1">男性 
+						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="2">女性 
+						<input type="radio" id="GENDER_ID" th:field="*{GENDER_ID}" value="3" checked>未確認 
 					</td>
 				</tr>
 			
