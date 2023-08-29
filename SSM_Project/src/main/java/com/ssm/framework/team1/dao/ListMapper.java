@@ -14,7 +14,7 @@ public interface ListMapper {
 	
 	List<Employee> findall();
 	
-	List<Employee> findEmployees(String deptId,String employeeId,Date fromDate,Date toDate);
+	List<Employee> findEmployees(String deptId,String employeeId,String fromDate,String toDate);
 	
 	List<Employee> deletebyId(String employeeId);
 }

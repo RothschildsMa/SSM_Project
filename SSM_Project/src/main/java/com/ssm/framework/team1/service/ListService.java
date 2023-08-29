@@ -22,11 +22,10 @@ public class ListService {
 	}
 	
 	
-	public List<Employee> searchEmployee(String deptId,String employeeId,Date fromDate,Date toDate){
+	public List<Employee> searchEmployee(String deptId,String employeeId,String fromDate,String toDate){
 		if("0".equals(deptId)) {
 			return getAllEmployee();
 		}
-	
 		else {
 			return mapper.findEmployees(deptId,employeeId,fromDate,toDate);
 		}
