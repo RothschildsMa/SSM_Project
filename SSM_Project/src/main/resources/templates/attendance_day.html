@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠情報一覧（日別）</title>
     <link rel="stylesheet" type="text/css" href="css/attendance_day.css">
+    <script src="/js/form.js"></script>
 </head>
 <body>
     <h1>勤怠情報一覧（日別）</h1>
@@ -39,7 +40,7 @@
                         <button class="button" type="submit" onclick="submitForm('selectForm','search','post')">検索</button>
                     </td>
                     <td>
-                        <button class="button" type="submit" onclick="submitForm('selectForm','add')">新規作成</button>
+                        <button class="button" type="submit" onclick="submitForm('selectForm','/refresh')">新規作成</button>
                     </td>
                     <td>
                         <button class="button">戻る</button>
