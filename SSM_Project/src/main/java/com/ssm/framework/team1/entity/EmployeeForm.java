@@ -26,8 +26,8 @@ public class EmployeeForm {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String ENTRY_DATE;
 	
-	@Min(value = 16, message = " ※ 妥当な年齢を入力してください")
-	@Max(value = 65, message = " ※ 妥当な年齢を入力してください")
+	@Min(value = 16, message = " ※ 妥当な年齢(16~65)を入力してください")
+	@Max(value = 65, message = " ※ 妥当な年齢(16~65)を入力してください")
 	private Integer AGE;
 	
 	@NotEmpty(message = " ※ メールアドレスを入力してください")

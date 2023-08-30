@@ -18,41 +18,44 @@ public class EmployeeFormController {
 	@Autowired
     private EmployeeFormService employeeFormService;
 	
-		// 登録用
-		@GetMapping("/form")
-	    public String showCreateFormPage(@ModelAttribute("employeeForm") EmployeeForm employeeForm) {   
-			String newId = employeeFormService.getNewEmployeeId();
-			employeeForm.setEMPLOYEE_ID(newId);
-			employeeForm.setIsNewEntry(true);
-	        return "employeeForm";
+
+	// 登録用
+	@GetMapping("/form")
+    public String showCreateFormPage(@ModelAttribute("employeeForm") EmployeeForm employeeForm,Model model) {   
+		String newId = employeeFormService.getNewEmployeeId();
+		employeeForm.setEMPLOYEE_ID(newId);
+		employeeForm.setIsNewEntry(true);
+		model.addAttribute("departments", employeeFormService.findDepartments());
+        return "employeeForm";
+    }
+
+	// 更新用
+	@GetMapping("/form/{EMPLOYEE_ID}")
+	public String showUpdateFormPage(@PathVariable String EMPLOYEE_ID, Model model){
+		EmployeeForm existingEmployee = employeeFormService.getEmployeeById(EMPLOYEE_ID);
+		model.addAttribute("employeeForm",existingEmployee);
+		model.addAttribute("departments", employeeFormService.findDepartments());
+		return "employeeForm";
+		
+	}
+
+	@PostMapping("/submit")
+	public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm,
+			BindingResult bindingResult, @RequestParam("button") String button) {
+
+		if ("登録".equals(button)) {
+			if (bindingResult.hasErrors()) {
+	            return "employeeForm";
+	        }
+			employeeFormService.createEmployee(employeeForm);
+
+		} else if ("修正".equals(button)) {
+			if (bindingResult.hasErrors()) {
+	            return "employeeForm";
+	        }
+	        employeeFormService.updateEmployee(employeeForm);
 	    }
 
-		// 更新用
-		@GetMapping("/form/{EMPLOYEE_ID}")
-		public String showUpdateFormPage(@PathVariable String EMPLOYEE_ID, Model model){
-			EmployeeForm existingEmployee = employeeFormService.getEmployeeById(EMPLOYEE_ID);
-			model.addAttribute("employeeForm",existingEmployee);
-			return "employeeForm";
-			
-		}
-
-		@PostMapping("/submit")
-		public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm,
-				BindingResult bindingResult, @RequestParam("button") String button) {
-
-			if ("登録".equals(button)) {
-				if (bindingResult.hasErrors()) {
-		            return "employeeForm";
-		        }
-				employeeFormService.createEmployee(employeeForm);
-
-			} else if ("修正".equals(button)) {
-				if (bindingResult.hasErrors()) {
-		            return "employeeForm";
-		        }
-		        employeeFormService.updateEmployee(employeeForm);
-		    }
-
-			return "redirect:/employeelist";
-		}
+		return "redirect:/employeelist";
+	}
 }

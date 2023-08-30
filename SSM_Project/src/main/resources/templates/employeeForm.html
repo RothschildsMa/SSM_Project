@@ -32,10 +32,7 @@
 		            <td><label for="DEPT_ID">所属</label></td>
 					<td>
 						<select class="select-dep" id="DEPT_ID" th:field="*{DEPT_ID}">
-							<option value="D00">開発部</option>
-							<option value="D01">総務部</option>
-							<option value="D02">品質保証部</option>
-							<option value="D03">営業部</option>
+						<option th:each="dept : ${departments}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
 						</select>
 					</td>
 				</tr>
