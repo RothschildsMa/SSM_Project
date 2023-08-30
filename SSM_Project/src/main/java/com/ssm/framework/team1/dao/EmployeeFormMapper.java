@@ -2,7 +2,6 @@ package com.ssm.framework.team1.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.ssm.framework.team1.entity.EmployeeForm;
 

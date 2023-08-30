@@ -40,17 +40,19 @@ public class EmployeeFormController {
 		public String createOrUpdateEmployee(@Valid EmployeeForm employeeForm,
 				BindingResult bindingResult, @RequestParam("button") String button) {
 
-			if (bindingResult.hasErrors()) {
-	            return "employeeForm";
-	        }
-
 			if ("登録".equals(button)) {
+				if (bindingResult.hasErrors()) {
+		            return "employeeForm";
+		        }
 				employeeFormService.createEmployee(employeeForm);
 
 			} else if ("修正".equals(button)) {
+				if (bindingResult.hasErrors()) {
+		            return "employeeForm";
+		        }
 		        employeeFormService.updateEmployee(employeeForm);
 		    }
-	
+
 			return "redirect:/employeelist";
 		}
 }
