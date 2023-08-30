@@ -23,8 +23,8 @@
 				<tr>
 					<td><label for="EMPLOYEE_NAME">氏名</label><label class="asterisk">*</label></td>
             		<td class="flex-align-center">
-            		<input type="text" id="EMPLOYEE_NAME" th:field="*{EMPLOYEE_NAME}" class="input-long" maxlength="100" size="30" />
-            		<span th:errors="*{EMPLOYEE_NAME}" class="error-inline"></span>
+	            		<input type="text" id="EMPLOYEE_NAME" th:field="*{EMPLOYEE_NAME}" class="input-long" maxlength="100" size="30" />
+	            		<span th:errors="*{EMPLOYEE_NAME}" class="error-inline"></span>
             		</td>
 				</tr>
 				
@@ -49,16 +49,16 @@
 				<tr>
 					<td><label for="TELEPHONE_NUMBER">電話番号</label></td>
 					<td class="flex-align-center">
-					<input type="text" th:field="*{TELEPHONE_NUMBER}" id="TELEPHONE_NUMBER" class="input-tel" maxlength="11">
-					<span th:errors="*{TELEPHONE_NUMBER}" class="error-inline"></span>
+						<input type="text" th:field="*{TELEPHONE_NUMBER}" id="TELEPHONE_NUMBER" class="input-tel" maxlength="11">
+						<span th:errors="*{TELEPHONE_NUMBER}" class="error-inline"></span>
 					</td>
 				</tr>
 			
 				<tr>
 					<td><label for="ENTRY_DATE">入社年月日</label><label class="asterisk">*</label></td>
 					<td class="flex-align-center">
-					<input type="date" th:field="*{ENTRY_DATE}" id="ENTRY_DATE">
-					<span th:errors="*{ENTRY_DATE}" class="error-inline"></span>
+						<input type="date" th:field="*{ENTRY_DATE}" id="ENTRY_DATE">
+						<span th:errors="*{ENTRY_DATE}" class="error-inline"></span>
 					</td>
 				</tr>
 				
@@ -66,16 +66,16 @@
 				<tr>
 					<td><label for="AGE">年齢</label></td>
 					<td class="flex-align-center">
-					<input type="text" th:field="*{AGE}" id="AGE" class="input-age" maxlength="2">
-					<span th:errors="*{AGE}" class="error-inline"></span>
+						<input type="text" th:field="*{AGE}" id="AGE" class="input-age" maxlength="2">
+						<span th:errors="*{AGE}" class="error-inline"></span>
 					</td>
 				</tr>
 			
 				<tr>
 					<td><label for="MAIL_ADDRESS">メールアドレス</label><label class="asterisk">*</label></td>
 					<td  class="flex-align-center">
-					<input type="text" th:field="*{MAIL_ADDRESS}" id="MAIL_ADDRESS" class="input-long" maxlength="100">
-					<span th:errors="*{MAIL_ADDRESS}" class="error-inline"></span>
+						<input type="text" th:field="*{MAIL_ADDRESS}" id="MAIL_ADDRESS" class="input-long" maxlength="100">
+						<span th:errors="*{MAIL_ADDRESS}" class="error-inline"></span>
 					</td>
 				</tr>
 			</table>
