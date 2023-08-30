@@ -25,7 +25,7 @@
 		#{endTime},
 		#{restHours}, #{workingHours},
 		#{overtimeHours}, #{absenceHours},
-		#{statusId}, #{remarks})
+		#{statusId}, #{remarks},#{content},{reason})
 	</insert>
 	<update id="update">
 		UPDATE T_ATTENDANCE SET

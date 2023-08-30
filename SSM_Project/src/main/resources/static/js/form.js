@@ -7,4 +7,7 @@
 	form.action=url;
 	if(method !== undefined) form.method=method;
 	form.submit();
-}
+
+				
+				
+			}

@@ -36,7 +36,7 @@ public class RefreshController {
 			return"refresh";
 		}
 
-		addForm.setEmployeeId("E1000");
+		addForm.setEmployeeId("E0001");
 
 		refreshService.insert(addForm);
 

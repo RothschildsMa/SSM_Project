@@ -37,6 +37,8 @@ public class RefreshService {
 		form.setEndTime(attendance.getEndTime());
 		form.setRestHours(attendance.getRestHours());
 		form.setOvertimeHours(attendance.getOvertimeHours());
+		form.setRemarks(attendance.getContent());
+		form.setRemarks(attendance.getReason());
 		form.setRemarks(attendance.getRemarks());
 	}
 }
