@@ -1,10 +1,14 @@
 package com.ssm.framework.team1.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import com.ssm.framework.team1.entity.Dept;
 import com.ssm.framework.team1.entity.EmployeeForm;
 import com.ssm.framework.team1.service.EmployeeFormService;
 
@@ -18,14 +22,17 @@ public class EmployeeFormController {
 	@Autowired
     private EmployeeFormService employeeFormService;
 	
+	@ModelAttribute("departments")
+	public List<Dept> getDepartments() {
+		return employeeFormService.findDepartments();
+	}
 
 	// 登録用
 	@GetMapping("/form")
-    public String showCreateFormPage(@ModelAttribute("employeeForm") EmployeeForm employeeForm,Model model) {   
+    public String showCreateFormPage(@ModelAttribute("employeeForm") EmployeeForm employeeForm) {   
 		String newId = employeeFormService.getNewEmployeeId();
 		employeeForm.setEMPLOYEE_ID(newId);
 		employeeForm.setIsNewEntry(true);
-		model.addAttribute("departments", employeeFormService.findDepartments());
         return "employeeForm";
     }
 
@@ -34,7 +41,6 @@ public class EmployeeFormController {
 	public String showUpdateFormPage(@PathVariable String EMPLOYEE_ID, Model model){
 		EmployeeForm existingEmployee = employeeFormService.getEmployeeById(EMPLOYEE_ID);
 		model.addAttribute("employeeForm",existingEmployee);
-		model.addAttribute("departments", employeeFormService.findDepartments());
 		return "employeeForm";
 		
 	}
