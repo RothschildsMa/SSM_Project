@@ -24,14 +24,14 @@
 		<where>
 			t1.DEL_FLG = 0
 			<if test="employeeId !=null and employeeId !=''">
-				AND EMPLOYEE_ID = #{employeeId}
+				AND t1.EMPLOYEE_ID = #{employeeId}
 			</if>
 			<if test="deptId !=null and deptId !=''">
-				AND DEPT_ID = #{deptId}
+				AND t1.DEPT_ID = #{deptId}
 			</if>
 			<if test="fromDate !=null and fromDate !=''">
 				<if test="toDate !=null and toDate !=''">
-					AND ENTRY_DATE BETWEEN #{fromDate} AND #{toDate}
+					AND t1.ENTRY_DATE BETWEEN #{fromDate} AND #{toDate}
 				</if>
 			</if>
 			

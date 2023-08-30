@@ -34,7 +34,9 @@ public class ListController {
 	@GetMapping("/employeelist")
 	public String listView(SearchForm searchForm,Model model) {
 		List<Employee> employeeList = listService.getAllEmployee();
+		List<Dept> deptList = deptMapper.FindDeptName();
 		
+		model.addAttribute("deptList", deptList);
 		model.addAttribute("employeeList", employeeList);
 		return "list";
 	}
@@ -49,11 +51,11 @@ public class ListController {
 		String fromDate = searchForm.getDateFrom();
 		String toDate = searchForm.getDateTo();
 		
-		//List<Dept> deptList = deptMapper.FindDeptName();
+		List<Dept> deptList = deptMapper.FindDeptName();
 		
 		List<Employee> employeeList = listService.searchEmployee(selectedDeptId,selectedEmployeeId,fromDate,toDate);
 		
-		//model.addAttribute("deptList", deptList);
+		model.addAttribute("deptList", deptList);
 		model.addAttribute("employeeList", employeeList);
 		
 		
