@@ -1,57 +1,64 @@
-/*勤怠情報一覧（日別）.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面布局样式 */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 信息方框样式 */
+.info-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* 按钮区域样式 */
+.button-area {
+    display: flex;
+    justify-content: flex-end; /* 右对齐按钮 */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+    font-size: 16px;
+}
+
+
 table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 th, td {
-    border: 1px solid black;
+    border: 1px solid #ccc;
     padding: 8px;
     text-align: center;
 }
 
-th {
-    background-color: lightgray;
-}
-
-#date, #status {
-    width: 80%;
-    padding: 6px;
-}
-
-.button-group {
-    text-align: right;
-    margin-top: 10px;
-}
-
-.button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 2px 7px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* ホバー時のスタイル */
-.btn:hover {
-    background-color: #45a049;
-}

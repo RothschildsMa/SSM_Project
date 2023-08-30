@@ -9,56 +9,53 @@
 <body>
     <h1>勤怠情報一覧（日別）</h1>
     <form id="selectForm" th:object="${searchForm}">
+        <div class="vertical-column">
+            <div class="vertical-item">
+                <span>社員ID:</span>
+                <span th:text="${employeeId}"></span>
+            </div>
+            <div class="vertical-item">
+                <span>氏名:</span>
+                <span th:text="${employeeName}"></span>
+            </div>
+            <div class="vertical-item">
+                <span>所属部門:</span>
+                <span th:text="${department}"></span>
+            </div>
+        </div>
+        <div class="vertical-column">
+            <div class="vertical-item">
+                <span>日付:</span>
+                <input type="date" id="date" th:field="*{attendanceDate}">
+            </div>
+            <div class="vertical-item">
+                <span>状態:</span>
+                <select name="statusId" th:field="*{statusId}">
+                    <option value="0">選択してください</option>
+                    <option th:each="status : ${statusList}"
+                            th:value="${status.statusId}" th:text="${status.statusName}"
+                            th:selected="${status.statusId == '0'}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="vertical-column">
+            <button class="button" type="submit" onclick="submitForm('selectForm','search','post')">検索</button>
+            <button class="button" type="submit" onclick="submitForm('selectForm','add')">新規作成</button>
+            <button class="button">戻る</button>
+        </div>
         <table>
             <thead>
             <tr>
-                <th>社員ID</th>
-                <td th:text="${employeeId}"></td>
-                <th>氏名</th>
-                <td th:text="${employeeName}"></td>
-                <th>所属部門</th>
-                <td th:text="${department}"></td>
+                <th>日付</th>
+                <th>出勤時間</th>
+                <th>退勤时间</th>
+                <th>休憩時間</th>
+                <th>残業时间</th>
+                <th>実働時間</th>
+                <th>状態</th>
+                <th>作業内容</th>
+                <th>修正</th>
             </tr>
-            
-                <tr>
-                    <th colspan="6"></th>
-                </tr>
-                <tr>
-                    <th>日付</th>
-                    <td><input type="date" id="date" th:field="*{attendanceDate}"></td>
-                    <th>状態</th>
-                    <td class="input-cell">
-                        <select name="statusId" th:field="*{statusId}">
-                            <option value="0">選択してください</option>
-                            <option th:each="status : ${statusList}"
-                                    th:value="${status.statusId}" th:text="${status.statusName}"
-                                    th:selected="${status.statusId == '0'}"></option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="button" type="submit" onclick="submitForm('selectForm','search','post')">検索</button>
-                    </td>
-                    <td>
-                        <button class="button" type="submit" onclick="submitForm('selectForm','add')">新規作成</button>
-                    </td>
-                    <td>
-                        <button class="button">戻る</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="8"></th>
-                </tr>
-                <tr>
-                    <th>日付</th>
-                    <th>出勤時間</th>
-                    <th>退勤時間</th>
-                    <th>休憩時間</th>
-                    <th>残業時間</th>
-                    <th>実働時間</th>
-                    <th>状態</th>
-                    <th>作業内容</th>
-                    <th>修正</th>
-                </tr>
             </thead>
             <tbody>
                 <tr th:each="attendance : ${attendanceList}" th:object="${attendance}">
