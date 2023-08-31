@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠情報一覧（日別）</title>
     <link rel="stylesheet" type="text/css" href="css/attendance_day.css">
+    <script src="/submitForm.js"></script>
 </head>
 <body>
     <h1>勤怠情報一覧（日別）</h1>
-    <form id="selectForm" th:object="${searchForm}">
+    <form id="selectForm" th:action="@{/refresh}" th:object="${searchForm}" method="post">
         <div class="vertical-column">
             <div class="vertical-item">
-                <span>社員ID:</span>
+                <span>社員ID:123456</span>
                 <span th:text="${employeeId}"></span>
             </div>
             <div class="vertical-item">
-                <span>氏名:</span>
+                <span>氏名:更新 太郎</span>
                 <span th:text="${employeeName}"></span>
             </div>
             <div class="vertical-item">
-                <span>所属部門:</span>
+                <span>所属部門:開発部</span>
                 <span th:text="${department}"></span>
             </div>
         </div>
@@ -40,7 +41,7 @@
         </div>
         <div class="vertical-column">
             <button class="button" type="submit" onclick="submitForm('selectForm','search','post')">検索</button>
-            <button class="button" type="submit" onclick="submitForm('selectForm','add')">新規作成</button>
+            <button class="button" type="submit" onclick="submitForm('selectForm','refresh')">新規作成</button>
             <button class="button">戻る</button>
         </div>
         <table>
@@ -48,9 +49,9 @@
             <tr>
                 <th>日付</th>
                 <th>出勤時間</th>
-                <th>退勤时间</th>
+                <th>退勤時間</th>
                 <th>休憩時間</th>
-                <th>残業时间</th>
+                <th>残業時間</th>
                 <th>実働時間</th>
                 <th>状態</th>
                 <th>作業内容</th>

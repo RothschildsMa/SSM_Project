@@ -35,8 +35,8 @@ public class ADController {
         return "attendance_day";
     }
     @GetMapping("/add")
-    public String redirectToRefreshPage() {
-        return "refresh";
+    public String refreshPage() {
+        return "refresh.html"; 
     }
 
 }
