@@ -14,4 +14,6 @@ public class Attendance {
 	private double absenceHours;
 	private String statusName;
 	private String remarks;
+	private String content;
+	private String reason;
 }

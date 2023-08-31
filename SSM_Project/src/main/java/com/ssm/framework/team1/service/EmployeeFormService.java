@@ -1,9 +1,13 @@
 package com.ssm.framework.team1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssm.framework.team1.dao.DeptMapper;
 import com.ssm.framework.team1.dao.EmployeeFormMapper;
+import com.ssm.framework.team1.entity.Dept;
 import com.ssm.framework.team1.entity.EmployeeForm;
 
 @Service
@@ -11,6 +15,13 @@ public class EmployeeFormService {
 	
 	@Autowired
     private EmployeeFormMapper employeeFormMapper;
+	
+	@Autowired
+	private DeptMapper deptMapper;
+	
+	public List<Dept> findDepartments(){
+		return deptMapper.FindDeptName();
+	}
 	
 	// 登録用
 	public String getNewEmployeeId() {
